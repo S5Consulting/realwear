@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="5dp"
+    android:paddingEnd="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:background="@drawable/border_bottom_bg_blue">
+
+            <RelativeLayout
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:contentDescription="@string/hf_no_number"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btn_back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="hf_use_description|Go back"
+                    android:onClick="finish"
+                    app:icon="@drawable/ic_chevron_left_black_24dp"
+                    tools:ignore="HardcodedText" />
+            </RelativeLayout>
+
+
+
+        </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#eff4f9"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription=""
+                    android:paddingStart="20dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="0dp">
+
+                    <LinearLayout
+                        android:layout_width="674dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/details_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="32dp"
+                            android:text="TextView"
+                            android:textSize="16sp"
+                            tools:text="title" />
+
+                        <TextView
+                            android:id="@+id/details_priority"
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:text="Priority"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/details_location"
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:text="Location"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/details_workcenter"
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:text="TextView"
+                            android:textSize="12sp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="101dp"
+                        android:paddingEnd="8dp"
+                        android:gravity="end"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/details_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TextView"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/details_order_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TextView"
+                            android:textSize="11sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/work_order_details_tablayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_bottom_bg_blue"
+
+                    android:layout_marginStart="20dp"
+                    app:background="?android:attr/actionBarItemBackground"
+                    app:tabIconTint="@color/tab_icon_color"
+                    app:tabGravity="start"
+                    app:tabIndicatorColor="#3b6f9a"
+                    app:tabIndicatorFullWidth="false"
+                    app:tabMode="scrollable"
+                    app:tabPaddingBottom="0dp"
+                    app:tabPaddingEnd="0dp"
+                    app:tabPaddingStart="0dp"
+                    app:tabPaddingTop="0dp"
+                    app:tabTextAppearance="@style/TabFont"
+                    app:tabTextColor="#000">
+
+
+                </com.google.android.material.tabs.TabLayout>
+
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/work_order_details_fragment_scroll"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fillViewport="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="418dp"
+                            android:orientation="vertical">
+
+                            <androidx.viewpager.widget.ViewPager
+                                android:id="@+id/viewPager"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="1dp"
+                                android:layout_marginEnd="1dp"
+                                android:layout_marginBottom="1dp"
+                                android:background="#fff"
+                                android:nestedScrollingEnabled="false"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/work_order_details_tablayout">
+
+                            </androidx.viewpager.widget.ViewPager>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.core.widget.NestedScrollView>
+
+            </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

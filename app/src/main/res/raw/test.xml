@@ -1,0 +1,1386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="https://rs1-sandbox:44300/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="https://rs1-sandbox:44300/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="https://rs1-sandbox:44300/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="https://rs1-sandbox:44300/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="https://rs1-sandbox:44300/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="https://rs1-sandbox:44300/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="https://rs1-sandbox:44300/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="https://rs1-sandbox:44300/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="https://rs1-sandbox:44300/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZFIORI_EAM_APP_SRV" xml:lang="en" sap:schema-version="1">
+            <EntityType Name="LongTextGet" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ObjectType"/>
+                    <PropertyRef Name="ObjectNo"/>
+                </Key>
+                <Property Name="ObjectType" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="30 Characters" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ObjectNo" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Text" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="MessageReturn" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Type"/>
+                    <PropertyRef Name="Id"/>
+                    <PropertyRef Name="Number"/>
+                </Key>
+                <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Message type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Message Class" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Number" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Message Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="220" sap:unicode="false" sap:label="Message Text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LogNo" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Log number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LogMsgNo" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Message no." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MessageV1" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Message Variable" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MessageV2" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Message Variable" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MessageV3" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Message Variable" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MessageV4" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Message Variable" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="CheckAppsAccess" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Factsheet"/>
+                    <PropertyRef Name="Changemaint"/>
+                    <PropertyRef Name="Recordinspection"/>
+                    <PropertyRef Name="Requestmaint"/>
+                </Key>
+                <Property Name="Factsheet" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Active" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Changemaint" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Active" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Recordinspection" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Active" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Requestmaint" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Active" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="C_StsObjActiveStatusCodeTextType" sap:label="Status Object Active Status Code Text" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="StatusObject"/>
+                    <PropertyRef Name="StatusCode"/>
+                </Key>
+                <Property Name="StatusObject" Type="Edm.String" Nullable="false" MaxLength="22" sap:display-format="UpperCase" sap:label="Object number"/>
+                <Property Name="StatusCode" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="UpperCase" sap:label="Status" sap:quickinfo="Object status"/>
+                <Property Name="IsUserStatus" Type="Edm.String" MaxLength="1"/>
+                <Property Name="StatusProfile" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Status Profile"/>
+                <Property Name="StatusSequenceNumber" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Status Sequence No." sap:quickinfo="Status Sequence Number"/>
+                <Property Name="StatusName" Type="Edm.String" MaxLength="30" sap:label="Status" sap:quickinfo="Object status"/>
+                <Property Name="StatusShortName" Type="Edm.String" MaxLength="4" sap:label="Status" sap:quickinfo="Individual status of an object (short form)"/>
+            </EntityType>
+            <EntityType Name="I_Customer_VHType" sap:label="Customer" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Customer"/>
+                </Key>
+                <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="CustomerName" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="OrganizationBPName1" Type="Edm.String" MaxLength="35" sap:label="Name 1"/>
+                <Property Name="OrganizationBPName2" Type="Edm.String" MaxLength="35" sap:label="Name 2"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country" sap:quickinfo="Country Key"/>
+                <Property Name="CityName" Type="Edm.String" MaxLength="35" sap:label="City"/>
+                <Property Name="StreetName" Type="Edm.String" MaxLength="35" sap:label="Street" sap:quickinfo="Street and House Number"/>
+                <Property Name="CustomerName" Type="Edm.String" MaxLength="80" sap:label="Customer Name" sap:quickinfo="Name of Customer"/>
+                <Property Name="CustomerAccountGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Account group" sap:quickinfo="Customer Account Group"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Authorization" sap:quickinfo="Authorization Group"/>
+                <Property Name="IsBusinessPurposeCompleted" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Purpose Complete Flag" sap:quickinfo="Business Purpose Completed Flag"/>
+            </EntityType>
+            <EntityType Name="I_FunctionalLocationStdVHType" sap:label="Functional Location" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FunctionalLocation"/>
+                </Key>
+                <Property Name="FunctionalLocation" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:text="FunctionalLocation_Text" sap:label="Functional Location"/>
+                <Property Name="FunctionalLocation_Text" Type="Edm.String" MaxLength="40" sap:label="Description" sap:quickinfo="Description of functional location" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Planning Plant" sap:quickinfo="Maintenance Planning Plant"/>
+            </EntityType>
+            <EntityType Name="I_MaintActyTypeStdVHType" sap:label="Maintenance Activity Type" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MaintenanceActivityType"/>
+                </Key>
+                <Property Name="MaintenanceActivityType" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:text="MaintenanceActivityType_Text" sap:label="Activity Type" sap:quickinfo="Maintenance Activity Type"/>
+                <Property Name="MaintenanceActivityType_Text" Type="Edm.String" MaxLength="30" sap:label="MAT description" sap:quickinfo="Description of maintenance activity type" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="I_MaintenanceRevisionStdVHType" sap:label="Maintenance Revision" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MaintenancePlanningPlant"/>
+                    <PropertyRef Name="MaintenanceRevision"/>
+                </Key>
+                <Property Name="MaintenancePlanningPlant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Planning Plant" sap:quickinfo="Maintenance Planning Plant"/>
+                <Property Name="MaintenanceRevision" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="UpperCase" sap:text="MaintenanceRevisionDesc" sap:label="Revision" sap:quickinfo="Revision for Plant Maintenance and Customer Service"/>
+                <Property Name="MaintenanceRevisionDesc" Type="Edm.String" MaxLength="40" sap:label="Rev. description" sap:quickinfo="Revision description"/>
+                <Property Name="RevisionStartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Start Date" sap:quickinfo="Date of revision start"/>
+                <Property Name="RevisionEndDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="End Date" sap:quickinfo="Date of revision end"/>
+            </EntityType>
+            <EntityType Name="I_MaintPlnrGrpStdVHType" sap:label="Maintenance Planner Group" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MaintenancePlannerGroup"/>
+                    <PropertyRef Name="MaintenancePlanningPlant"/>
+                </Key>
+                <Property Name="MaintenancePlannerGroup" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:text="MaintenancePlannerGroupName" sap:label="Planner Group" sap:quickinfo="Maintenance Planner Group"/>
+                <Property Name="MaintenancePlanningPlant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Planning Plant" sap:quickinfo="Maintenance Planning Plant"/>
+                <Property Name="MaintenancePlannerGroupName" Type="Edm.String" MaxLength="18" sap:label="Planner Group Name" sap:quickinfo="Name of the Maintenance Planner Group"/>
+            </EntityType>
+            <EntityType Name="I_MaterialStdVHType" sap:label="Material" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Material"/>
+                </Key>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:text="Material_Text" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="Material_Text" Type="Edm.String" MaxLength="40" sap:label="Material Description" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="I_PersWrkAgrmtSrchHelpType" sap:label="Search Help for WorkAgreements" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PersonWorkAgreement"/>
+                </Key>
+                <Property Name="PersonWorkAgreement" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="Personnel number"/>
+                <Property Name="Person" Type="Edm.String" MaxLength="45" sap:display-format="UpperCase" sap:label="ID rel.object" sap:quickinfo="ID of Related Object"/>
+                <Property Name="LastName" Type="Edm.String" MaxLength="40" sap:label="Last Name" sap:quickinfo="Last name of business partner (person)"/>
+                <Property Name="FamilyName" Type="Edm.String" MaxLength="35" sap:display-format="UpperCase" sap:label="Family Name"/>
+                <Property Name="FirstName" Type="Edm.String" MaxLength="40" sap:label="First Name" sap:quickinfo="First name of business partner (person)"/>
+                <Property Name="GivenName" Type="Edm.String" MaxLength="35" sap:display-format="UpperCase" sap:label="Given Name"/>
+                <Property Name="PersonExternalID" Type="Edm.String" MaxLength="60" sap:display-format="UpperCase" sap:label="ID number" sap:quickinfo="Identification Number"/>
+                <Property Name="UserID" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User ID"/>
+                <Property Name="PersonFullName" Type="Edm.String" MaxLength="80" sap:label="Full Name"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/>
+                <Property Name="CompanyCodeName" Type="Edm.String" MaxLength="25" sap:label="Company Name" sap:quickinfo="Name of Company Code or Company"/>
+                <Property Name="CostCenter" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Cost Center"/>
+                <Property Name="CostCenterName" Type="Edm.String" MaxLength="20" sap:label="Cost Center Name"/>
+                <Property Name="Job" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Job key" sap:quickinfo="Job"/>
+                <Property Name="JobName" Type="Edm.String" MaxLength="40" sap:label="Job Name" sap:quickinfo="Object Name"/>
+                <Property Name="OrganizationalUnitName" Type="Edm.String" MaxLength="40" sap:label="Organizational Unit Name"/>
+                <Property Name="PersonWorkAgrmtAuthznGrpg" Type="Edm.String" MaxLength="14" sap:display-format="UpperCase" sap:label="Organizational key" sap:quickinfo="Organizational Key"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Authorization Group"/>
+                <Property Name="IsBusinessPurposeCompleted" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Purpose Completed" sap:quickinfo="Business Purpose Completed Flag"/>
+            </EntityType>
+            <EntityType Name="I_PlantStdVHType" sap:label="Plant Std VH" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                </Key>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="PlantName" sap:label="Plant"/>
+                <Property Name="PlantName" Type="Edm.String" MaxLength="30" sap:label="Plant Name"/>
+            </EntityType>
+            <EntityType Name="I_SalesOrderItemStdVHType" sap:label="Sales Order Item" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesOrder"/>
+                    <PropertyRef Name="SalesOrderItem"/>
+                </Key>
+                <Property Name="SalesOrder" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Order"/>
+                <Property Name="SalesOrderItem" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:text="SalesOrderItemText" sap:label="Item" sap:quickinfo="Sales Order Item"/>
+                <Property Name="SalesOrderItemText" Type="Edm.String" MaxLength="40" sap:label="Item Description" sap:quickinfo="Short text for sales order item"/>
+            </EntityType>
+            <EntityType Name="I_SalesOrderStdVHType" sap:label="Sales Order" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesOrder"/>
+                </Key>
+                <Property Name="SalesOrder" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Order"/>
+            </EntityType>
+            <EntityType Name="I_StorageLocationType" sap:label="Storage Location" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                    <PropertyRef Name="StorageLocation"/>
+                </Key>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="StorageLocation" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="StorageLocationName" sap:label="Storage location"/>
+                <Property Name="StorageLocationName" Type="Edm.String" MaxLength="16" sap:label="Storage Loc. Name" sap:quickinfo="Storage Location Name"/>
+                <Property Name="SalesOrganization" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="DistributionChannel" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Distribution Channel"/>
+                <Property Name="Division" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Division"/>
+                <Property Name="IsStorLocAuthznCheckActive" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Authorization check" sap:quickinfo="Storage location authorization for goods movements active"/>
+            </EntityType>
+            <EntityType Name="I_WrkCtrBySemanticKeyStdVHType" sap:label="Work Center By Semantic Key" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                    <PropertyRef Name="WorkCenter"/>
+                </Key>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="WorkCenter" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="UpperCase" sap:text="WorkCenter_Text" sap:label="Work Center"/>
+                <Property Name="WorkCenter_Text" Type="Edm.String" MaxLength="40" sap:label="Work Center Text" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="WorkCenterInternalID" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Object ID" sap:quickinfo="Object ID of the resource"/>
+            </EntityType>
+            <EntityType Name="AddMaterial" sap:label="Material" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PlanningPlant"/>
+                    <PropertyRef Name="Material"/>
+                    <PropertyRef Name="StorageLocation"/>
+                    <PropertyRef Name="Batch"/>
+                </Key>
+                <Property Name="PlanningPlant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number" sap:value-list="standard"/>
+                <Property Name="StorageLocation" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Storage Location" sap:quickinfo="Storage location"/>
+                <Property Name="Batch" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Batch" sap:quickinfo="Batch Number"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="MaterialName" Type="Edm.String" MaxLength="40" sap:label="Material Name" sap:quickinfo="Material Description"/>
+                <Property Name="StorageBin" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Storage Bin"/>
+                <Property Name="Stock" Type="Edm.Decimal" Precision="13" Scale="0" sap:label="Stock"/>
+                <Property Name="MaterialBaseUnit" Type="Edm.String" MaxLength="3" sap:label="Material Unit" sap:quickinfo="Base Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="MaterialType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Material Type" sap:quickinfo="Material type"/>
+                <Property Name="MaterialGroup" Type="Edm.String" MaxLength="9" sap:display-format="UpperCase" sap:label="Material Group"/>
+                <Property Name="Manufacturer" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Manufacturer" sap:quickinfo="Manufacturer Part Number"/>
+                <NavigationProperty Name="Parameters" Relationship="ZFIORI_EAM_APP_SRV.assoc_14763945C8482860E4D6BE86E1D019F6" FromRole="ToRole_assoc_14763945C8482860E4D6BE86E1D019F6" ToRole="FromRole_assoc_14763945C8482860E4D6BE86E1D019F6" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZEAM_C_ADD_MATERIALParameters" sap:semantics="parameters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PlanningPlant"/>
+                </Key>
+                <Property Name="PlanningPlant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Set" Relationship="ZFIORI_EAM_APP_SRV.assoc_14763945C8482860E4D6BE86E1D019F6" FromRole="FromRole_assoc_14763945C8482860E4D6BE86E1D019F6" ToRole="ToRole_assoc_14763945C8482860E4D6BE86E1D019F6"/>
+            </EntityType>
+            <EntityType Name="EquipmentList" sap:semantics="aggregate" sap:label="Equipment" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Equipment" Type="Edm.String" MaxLength="18" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Equipment" sap:quickinfo="Equipment Number"/>
+                <Property Name="EquipmentDesc" Type="Edm.String" MaxLength="40" sap:aggregation-role="dimension" sap:label="Equipment Desc" sap:quickinfo="Description of technical object"/>
+                <Property Name="WareHouse" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="WareHouse" sap:quickinfo="Plant"/>
+                <Property Name="StorageLocation" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Storage Location" sap:quickinfo="Storage location"/>
+                <Property Name="StorageLocationName" Type="Edm.String" MaxLength="16" sap:aggregation-role="dimension" sap:label="Storage Location Desc" sap:quickinfo="Storage Location Name"/>
+                <Property Name="CustomerTag" Type="Edm.String" MaxLength="25" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Customer TAG" sap:quickinfo="Technical identification number"/>
+                <Property Name="AssetManufacturerName" Type="Edm.String" MaxLength="30" sap:aggregation-role="dimension" sap:label="Manufacturer Name" sap:quickinfo="Manufacturer of Asset"/>
+                <Property Name="Batch" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Batch" sap:quickinfo="Batch Number"/>
+                <Property Name="SerialNumber" Type="Edm.String" MaxLength="18" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Serial No." sap:quickinfo="Serial Number"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="40" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="Customer" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Current customer" sap:quickinfo="Customer to Whom Serial Number was Delivered" sap:value-list="standard"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="AuthorizGroup" sap:quickinfo="Technical object authorization group"/>
+                <Property Name="GrossWeight" Type="Edm.Decimal" Precision="13" Scale="3" sap:aggregation-role="measure" sap:unit="GrossWeightUnit" sap:label="Gross Weight" sap:quickinfo="Weight of object" sap:filterable="false"/>
+                <Property Name="GrossWeightUnit" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:label="Unit of weight" sap:semantics="unit-of-measure"/>
+                <Property Name="Supplier" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Vendor" sap:quickinfo="Vendor number"/>
+                <Property Name="FunctionalLocation" Type="Edm.String" MaxLength="40" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Functional Location"/>
+                <Property Name="FunctionalLocationName" Type="Edm.String" MaxLength="40" sap:aggregation-role="dimension" sap:label="Functional Location Name" sap:quickinfo="Description of functional location"/>
+            </EntityType>
+            <EntityType Name="ZEAM_C_START_TIMEType" sap:label="Favorite Interface CDS" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Ordernumber"/>
+                    <PropertyRef Name="Operationnumber"/>
+                </Key>
+                <Property Name="Ordernumber" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Order" sap:quickinfo="Order Number"/>
+                <Property Name="Operationnumber" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Activity" sap:quickinfo="Operation/Activity Number"/>
+                <Property Name="StartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date"/>
+                <Property Name="StartTime" Type="Edm.Time" Precision="0" sap:label="Time"/>
+                <Property Name="StartDateTime" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+                <Property Name="calculated_time" Type="Edm.Int32" sap:label="Job duration" sap:quickinfo="Job duration (in seconds)"/>
+            </EntityType>
+            <EntityType Name="LoginUserCheck" sap:label="Check if Logged in user is Foreman or Opearater" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="UserName"/>
+                </Key>
+                <Property Name="UserName" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="User" sap:quickinfo="User Name in User Master Record"/>
+                <Property Name="IsForeman" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Boolean Variable (X = True, - = False, Space = Unknown)" sap:heading=""/>
+                <Property Name="IsOperator" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Boolean Variable (X = True, - = False, Space = Unknown)" sap:heading=""/>
+                <Property Name="IsPromark" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Boolean Variable (X = True, - = False, Space = Unknown)" sap:heading=""/>
+            </EntityType>
+            <EntityType Name="WorkOrderDetail" sap:label="Maintenance Order" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MaintenanceOrder"/>
+                </Key>
+                <Property Name="MaintenanceOrder" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:text="MaintenanceOrderDesc" sap:label="WO Number" sap:quickinfo="Order Number"/>
+                <Property Name="MaintOrderWithLeadingZeros" Type="Edm.String" MaxLength="12"/>
+                <Property Name="MaintenanceOrderDesc" Type="Edm.String" MaxLength="40" sap:label="WO Text" sap:quickinfo="Description"/>
+                <Property Name="MaintenanceOrderInternalID" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="Object number"/>
+                <Property Name="MaintenanceOrderType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Order Type"/>
+                <Property Name="MaintenanceProcessingPhase" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Phase" sap:quickinfo="Maintenance Processing Phase"/>
+                <Property Name="MaintPriority" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Order Priority" sap:quickinfo="Priority"/>
+                <Property Name="MaintPriorityDesc" Type="Edm.String" MaxLength="20" sap:label="Priority Text"/>
+                <Property Name="SalesOrder" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Order" sap:quickinfo="Sales Order Number"/>
+                <Property Name="SalesOrderItem" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:label="Sales Order Item" sap:quickinfo="Item number in Sales Order"/>
+                <Property Name="SuperierWorkOrder" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Superier Work Order" sap:quickinfo="Number of Superior Order"/>
+                <Property Name="MainWorkCenter" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Main Work Center" sap:quickinfo="Work Center"/>
+                <Property Name="MainWorkCenterText" Type="Edm.String" MaxLength="40" sap:label="Maintenance Work Center Text" sap:quickinfo="Work Center Text"/>
+                <Property Name="MaintOrdBasicStartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Start Date" sap:quickinfo="Basic Start Date"/>
+                <Property Name="MaintOrdBasicEndDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="End Date" sap:quickinfo="Basic finish date"/>
+                <Property Name="MainWorkCenterPlant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:text="MainWorkCenterPlantName" sap:label="Work Center Plant" sap:quickinfo="Plant"/>
+                <Property Name="MainWorkCenterPlantName" Type="Edm.String" MaxLength="30" sap:label="Work Center Plant Name" sap:quickinfo="Plant Name"/>
+                <Property Name="MaintenancePlannerGroup" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Planner Group" sap:quickinfo="Planner Group for Customer Service and Plant Maintenance"/>
+                <Property Name="QualityInspection" Type="Edm.String" MaxLength="12" sap:display-format="NonNegative" sap:label="Quality Inspection" sap:quickinfo="Inspection Lot Number"/>
+                <Property Name="QualityInspectionVisible" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Quality Inspection Visible" sap:quickinfo="Boolean Variable (X = True, - = False, Space = Unknown)"/>
+                <Property Name="MaintenancePlanningPlant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:text="MaintenancePlanningPlantName" sap:label="Planning Plant" sap:quickinfo="Maintenance Planning Plant"/>
+                <Property Name="MaintenancePlanningPlantName" Type="Edm.String" MaxLength="30" sap:label="Planning Plant Name" sap:quickinfo="Plant Name"/>
+                <Property Name="PersonResponsibleName" Type="Edm.String" MaxLength="200" sap:label="Employee Responsible" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Equipmentpartner" Type="Edm.String" MaxLength="200" sap:label="Equipment partner" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SOPartner" Type="Edm.String" MaxLength="200" sap:label="SO Partner" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AssignedUser" Type="Edm.String" MaxLength="200" sap:label="Assigned User" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AssignedWC" Type="Edm.String" MaxLength="200" sap:label="Assigned to WC" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TechContact" Type="Edm.String" MaxLength="200" sap:label="Tech Contact" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IsProductionOrder" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Boolean Variable (X = True, - = False, Space = Unknown)" sap:heading=""/>
+                <Property Name="MaintenanceActivityType" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Job Type" sap:quickinfo="Maintenance Activity Type"/>
+                <Property Name="IsStatusMSPT" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Is MSPT" sap:quickinfo="Boolean Variable (X = True, - = False, Space = Unknown)"/>
+                <Property Name="MaintenanceActivityTypeName" Type="Edm.String" MaxLength="30" sap:label="Job Type Name" sap:quickinfo="Description of maintenance activity type"/>
+                <Property Name="FunctionalLocation" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Location" sap:quickinfo="Functional Location"/>
+                <Property Name="FunctionalLocationName" Type="Edm.String" MaxLength="40" sap:label="FunctLocDescrip." sap:quickinfo="Description of functional location"/>
+                <Property Name="Project" Type="Edm.String" MaxLength="24" sap:display-format="UpperCase" sap:text="ProjectDescription" sap:label="Project Definition" sap:quickinfo="Project definition"/>
+                <Property Name="ProjectDescription" Type="Edm.String" MaxLength="40" sap:label="Project Definition Desc" sap:quickinfo="Project Definition Name"/>
+                <Property Name="WBSElement" Type="Edm.String" MaxLength="24" sap:display-format="UpperCase" sap:text="WBSDescription" sap:label="WBS Element / Project"/>
+                <Property Name="WBSDescription" Type="Edm.String" MaxLength="40" sap:label="WBS Element Description"/>
+                <Property Name="MaintPriorityType" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Priority Type"/>
+                <Property Name="WorkCenterInternalID" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Work Center" sap:quickinfo="Object ID of the Work Center"/>
+                <Property Name="MaintObjectLocAcctAssgmtNmbr" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Loc/Acct Assignment" sap:quickinfo="Location and account assignment for technical object"/>
+                <Property Name="Equipment" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Equipment" sap:quickinfo="Equipment Number"/>
+                <Property Name="ApplTaskList" Type="Edm.String" MaxLength="1"/>
+                <Property Name="IsWorkOrderActive" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Boolean Variable (X = True, - = False, Space = Unknown)" sap:heading=""/>
+                <NavigationProperty Name="to_AssignedAllUsersList" Relationship="ZFIORI_EAM_APP_SRV.assoc_323501EED4F7FB533FE8E7CE9250380B" FromRole="FromRole_assoc_323501EED4F7FB533FE8E7CE9250380B" ToRole="ToRole_assoc_323501EED4F7FB533FE8E7CE9250380B"/>
+                <NavigationProperty Name="to_AssignedUsersList" Relationship="ZFIORI_EAM_APP_SRV.assoc_BC549BDC89B0A9505402135B9D808762" FromRole="FromRole_assoc_BC549BDC89B0A9505402135B9D808762" ToRole="ToRole_assoc_BC549BDC89B0A9505402135B9D808762"/>
+                <NavigationProperty Name="to_MainOrderSuborder" Relationship="ZFIORI_EAM_APP_SRV.assoc_54E567B3FDABB212F09D8A2FAEECC239" FromRole="FromRole_assoc_54E567B3FDABB212F09D8A2FAEECC239" ToRole="ToRole_assoc_54E567B3FDABB212F09D8A2FAEECC239"/>
+                <NavigationProperty Name="to_WorkOrderAttach" Relationship="ZFIORI_EAM_APP_SRV.assoc_B6D26E5BB572F61FB3673C4966EF3F02" FromRole="FromRole_assoc_B6D26E5BB572F61FB3673C4966EF3F02" ToRole="ToRole_assoc_B6D26E5BB572F61FB3673C4966EF3F02"/>
+                <NavigationProperty Name="to_WorkOrderComp" Relationship="ZFIORI_EAM_APP_SRV.assoc_81F30BDC1AE2A64349CF352F6C5BC2D4" FromRole="FromRole_assoc_81F30BDC1AE2A64349CF352F6C5BC2D4" ToRole="ToRole_assoc_81F30BDC1AE2A64349CF352F6C5BC2D4"/>
+                <NavigationProperty Name="to_WorkOrderObjectList" Relationship="ZFIORI_EAM_APP_SRV.assoc_A1A63CF521321F0EBD012C1A5A106B5A" FromRole="FromRole_assoc_A1A63CF521321F0EBD012C1A5A106B5A" ToRole="ToRole_assoc_A1A63CF521321F0EBD012C1A5A106B5A"/>
+                <NavigationProperty Name="to_WorkOrderOper" Relationship="ZFIORI_EAM_APP_SRV.assoc_D13FE77D235002ACC403A6837CE8A8E3" FromRole="FromRole_assoc_D13FE77D235002ACC403A6837CE8A8E3" ToRole="ToRole_assoc_D13FE77D235002ACC403A6837CE8A8E3"/>
+                <NavigationProperty Name="to_WorkOrderOperConf" Relationship="ZFIORI_EAM_APP_SRV.assoc_27A1154D2AF122720726596782BA5B4F" FromRole="FromRole_assoc_27A1154D2AF122720726596782BA5B4F" ToRole="ToRole_assoc_27A1154D2AF122720726596782BA5B4F"/>
+            </EntityType>
+            <EntityType Name="WorkOrderList" sap:label="Maintenance Order" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Phase1"/>
+                    <PropertyRef Name="Phase2"/>
+                    <PropertyRef Name="Phase3"/>
+                    <PropertyRef Name="MaintenanceOrder"/>
+                </Key>
+                <Property Name="Phase1" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Phase"/>
+                <Property Name="Phase2" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Phase"/>
+                <Property Name="Phase3" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Phase"/>
+                <Property Name="MaintenanceOrder" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:text="MaintenanceOrderDesc" sap:label="Order" sap:quickinfo="Order Number"/>
+                <Property Name="MaintOrderWithLeadingZeros" Type="Edm.String" MaxLength="12"/>
+                <Property Name="MaintenanceOrderDesc" Type="Edm.String" MaxLength="40" sap:label="Description"/>
+                <Property Name="MaintenanceOrderInternalID" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="Object number"/>
+                <Property Name="UserPersonnelNumber" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Personnel Number"/>
+                <Property Name="MaintenanceOrderType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Order Type"/>
+                <Property Name="WorkCenterAssigned" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Partner"/>
+                <Property Name="IsProductionOrder" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Boolean Variable (X = True, - = False, Space = Unknown)" sap:heading=""/>
+                <Property Name="IsUserResponsible" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="IsUserResponsible" sap:quickinfo="Boolean Variable (X = True, - = False, Space = Unknown)"/>
+                <Property Name="IsEmployeeResponsible" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Boolean Variable (X = True, - = False, Space = Unknown)" sap:heading=""/>
+                <Property Name="MaintPriority" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Order Priority" sap:quickinfo="Priority"/>
+                <Property Name="MaintOrdBasicStartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Start Date" sap:quickinfo="Basic Start Date"/>
+                <Property Name="MaintOrdBasicEndDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="End Date" sap:quickinfo="Basic finish date"/>
+                <Property Name="MaintPriorityDesc" Type="Edm.String" MaxLength="20" sap:label="Priority Text"/>
+                <Property Name="MainWorkCenter" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Main Work Center" sap:quickinfo="Main work center for maintenance tasks"/>
+                <Property Name="QualityInspection" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Quality Inspection" sap:quickinfo="Boolean Variable (X = True, - = False, Space = Unknown)"/>
+                <Property Name="ConcatenatedActiveSystStsName" Type="Edm.String" MaxLength="224" sap:label="System Status" sap:quickinfo="Concatenated System Status"/>
+                <Property Name="ConcatenatedActiveUserStsName" Type="Edm.String" MaxLength="224" sap:label="User Status" sap:quickinfo="Concatenated User Status"/>
+                <Property Name="MaintenancePlanningPlant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Planning Plant" sap:quickinfo="Maintenance Planning Plant"/>
+                <Property Name="MaintPriorityType" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Priority Type"/>
+                <Property Name="MaintOrderRoutingNumber" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="Opertn task list no." sap:quickinfo="Routing number of operations in the order"/>
+                <Property Name="IsStatusMSPT" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Is MSPT" sap:quickinfo="Boolean Variable (X = True, - = False, Space = Unknown)"/>
+                <Property Name="IsOrderAssigned" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Is Order Assigned" sap:quickinfo="Boolean Variable (X = True, - = False, Space = Unknown)"/>
+                <Property Name="PercentCompleteWrkQty" Type="Edm.Decimal" Precision="3" Scale="0" sap:label="Total % Complete"/>
+                <NavigationProperty Name="to_ActiveSystemStatus" Relationship="ZFIORI_EAM_APP_SRV.assoc_5F48D2A06860331ED8BF1E40313702F5" FromRole="FromRole_assoc_5F48D2A06860331ED8BF1E40313702F5" ToRole="ToRole_assoc_5F48D2A06860331ED8BF1E40313702F5"/>
+                <NavigationProperty Name="to_ActiveUserStatus" Relationship="ZFIORI_EAM_APP_SRV.assoc_CEB5D115F1B59378685CCA73931917EF" FromRole="FromRole_assoc_CEB5D115F1B59378685CCA73931917EF" ToRole="ToRole_assoc_CEB5D115F1B59378685CCA73931917EF"/>
+                <NavigationProperty Name="Parameters" Relationship="ZFIORI_EAM_APP_SRV.assoc_8E48F0B12568D02580C6140BA4A10AC4" FromRole="ToRole_assoc_8E48F0B12568D02580C6140BA4A10AC4" ToRole="FromRole_assoc_8E48F0B12568D02580C6140BA4A10AC4" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZEAM_C_WORK_ORDER_LISTParameters" sap:semantics="parameters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Phase1"/>
+                    <PropertyRef Name="Phase2"/>
+                    <PropertyRef Name="Phase3"/>
+                </Key>
+                <Property Name="Phase1" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Phase" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Phase2" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Phase" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Phase3" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Phase" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Set" Relationship="ZFIORI_EAM_APP_SRV.assoc_8E48F0B12568D02580C6140BA4A10AC4" FromRole="FromRole_assoc_8E48F0B12568D02580C6140BA4A10AC4" ToRole="ToRole_assoc_8E48F0B12568D02580C6140BA4A10AC4"/>
+            </EntityType>
+            <EntityType Name="WorkOrderOperDetail" sap:label="Maintenance Order Operation" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="OrderNumber"/>
+                    <PropertyRef Name="MaintOrderRoutingNumber"/>
+                    <PropertyRef Name="MaintOrderOperationCounter"/>
+                </Key>
+                <Property Name="OrderNumber" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Order" sap:quickinfo="Order Number"/>
+                <Property Name="MaintOrderRoutingNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="NonNegative" sap:label="Opertn task list no." sap:quickinfo="Routing number of operations in the order"/>
+                <Property Name="MaintOrderOperationCounter" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="Counter" sap:quickinfo="General counter for order"/>
+                <Property Name="OperationNumber" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Operation Number" sap:quickinfo="Operation/Activity Number"/>
+                <Property Name="MaintenanceItemObjectList" Type="Edm.Int64" sap:label="Object list" sap:quickinfo="Object list number"/>
+                <Property Name="OperationDescription" Type="Edm.String" MaxLength="40" sap:label="Operation Description" sap:quickinfo="Operation short text"/>
+                <Property Name="ExecutingWorkCenter" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Operation Work Center" sap:quickinfo="Work Center" sap:value-list="standard"/>
+                <Property Name="PlannedPersons" Type="Edm.Byte" sap:label="Planned Persons" sap:quickinfo="Number of capacities required"/>
+                <Property Name="PlannedWork" Type="Edm.Decimal" Precision="7" Scale="1" sap:unit="PE471E24E9A294315840E6876D3E44DD2" sap:label="Estimated Work" sap:quickinfo="Work involved in the activity"/>
+                <Property Name="PlannedWorkUnit" Type="Edm.String" MaxLength="3" sap:label="Planned Work Unit" sap:quickinfo="Unit for work" sap:semantics="unit-of-measure"/>
+                <Property Name="Duration" Type="Edm.Decimal" Precision="5" Scale="1" sap:unit="P560D00C65143E5484D2CED158FE57F89" sap:label="Duration" sap:quickinfo="Normal duration of the activity"/>
+                <Property Name="DurationUnit" Type="Edm.String" MaxLength="3" sap:label="Duration Unit" sap:quickinfo="Normal duration/unit" sap:semantics="unit-of-measure"/>
+                <Property Name="ActualWork" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="PE471E24E9A294315840E6876D3E44DD2" sap:label="Actual Work" sap:quickinfo="Actual work"/>
+                <Property Name="StandardTextKey" Type="Edm.String" MaxLength="7" sap:display-format="UpperCase" sap:label="Standard Text Key" sap:quickinfo="Standard text key"/>
+                <Property Name="Confirmation" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="Confirmation" sap:quickinfo="Completion confirmation number for the operation"/>
+                <Property Name="FinalConfirmed" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Final confirmed?" sap:quickinfo="Boolean Variable (X = True, - = False, Space = Unknown)"/>
+                <Property Name="PlanningPlant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Planning Plant" sap:quickinfo="Plant"/>
+                <Property Name="OperationControlKey" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Operation Control Key" sap:quickinfo="Control key"/>
+                <Property Name="ActivityType" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Activity Type"/>
+                <Property Name="ReturnErrorMessage" Type="Edm.String" MaxLength="1024" sap:label="Return Error Message"/>
+                <NavigationProperty Name="to_WorkOrderObjectList" Relationship="ZFIORI_EAM_APP_SRV.assoc_7615A4CBA7018B355ABC4DB279BD9C36" FromRole="FromRole_assoc_7615A4CBA7018B355ABC4DB279BD9C36" ToRole="ToRole_assoc_7615A4CBA7018B355ABC4DB279BD9C36"/>
+                <NavigationProperty Name="to_WorkOrderOperAttach" Relationship="ZFIORI_EAM_APP_SRV.assoc_99F1B80B33890B9FFD4CEABF41BD2911" FromRole="FromRole_assoc_99F1B80B33890B9FFD4CEABF41BD2911" ToRole="ToRole_assoc_99F1B80B33890B9FFD4CEABF41BD2911"/>
+                <NavigationProperty Name="to_WorkOrderOperComp" Relationship="ZFIORI_EAM_APP_SRV.assoc_592229B1317351951957433C628E9910" FromRole="FromRole_assoc_592229B1317351951957433C628E9910" ToRole="ToRole_assoc_592229B1317351951957433C628E9910"/>
+                <NavigationProperty Name="to_WorkOrderOperConf" Relationship="ZFIORI_EAM_APP_SRV.assoc_89B1D043275DDC5C4F40A8442C014022" FromRole="FromRole_assoc_89B1D043275DDC5C4F40A8442C014022" ToRole="ToRole_assoc_89B1D043275DDC5C4F40A8442C014022"/>
+                <NavigationProperty Name="to_WorkOrderOperVarReas" Relationship="ZFIORI_EAM_APP_SRV.assoc_8D03B52C021630150C7469BBF559236A" FromRole="FromRole_assoc_8D03B52C021630150C7469BBF559236A" ToRole="ToRole_assoc_8D03B52C021630150C7469BBF559236A"/>
+            </EntityType>
+            <EntityType Name="WorkOrdSubOperDoc" sap:label="Documents for MAintenance Order Oper" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MaintOrderRoutingNumber"/>
+                    <PropertyRef Name="MaintOrderOperationCounter"/>
+                    <PropertyRef Name="instid_b"/>
+                    <PropertyRef Name="Counter"/>
+                    <PropertyRef Name="DocumentType"/>
+                    <PropertyRef Name="DocumentNumber"/>
+                    <PropertyRef Name="DocumentVersion"/>
+                    <PropertyRef Name="DocumentPart"/>
+                </Key>
+                <Property Name="MaintOrderRoutingNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="NonNegative" sap:label="Opertn task list no."/>
+                <Property Name="MaintOrderOperationCounter" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="Counter"/>
+                <Property Name="instid_b" Type="Edm.String" Nullable="false" MaxLength="25" sap:display-format="UpperCase" sap:label="Document" sap:quickinfo="Document number"/>
+                <Property Name="Counter" Type="Edm.Int32" Nullable="false" sap:label="Counter" sap:quickinfo="Counter for documents"/>
+                <Property Name="DocumentType" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Document Type"/>
+                <Property Name="DocumentNumber" Type="Edm.String" Nullable="false" MaxLength="25" sap:display-format="UpperCase" sap:label="Document" sap:quickinfo="Document number"/>
+                <Property Name="DocumentVersion" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Document Version"/>
+                <Property Name="DocumentPart" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Document Part"/>
+                <Property Name="CreatedDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="AttachDesc" Type="Edm.String" MaxLength="40" sap:label="Description" sap:quickinfo="Document Description"/>
+                <Property Name="CreatedTime" Type="Edm.Time" Precision="0"/>
+                <Property Name="AttachType" Type="Edm.String" MaxLength="15" sap:label="Attribute feature (short version)" sap:heading=""/>
+                <Property Name="CreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By"/>
+                <Property Name="file_url" Type="Edm.String" MaxLength="88"/>
+                <NavigationProperty Name="Parameters" Relationship="ZFIORI_EAM_APP_SRV.assoc_DBE6AB09074E11A5BA67B9BBEEBEC9D7" FromRole="ToRole_assoc_DBE6AB09074E11A5BA67B9BBEEBEC9D7" ToRole="FromRole_assoc_DBE6AB09074E11A5BA67B9BBEEBEC9D7" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZEAM_C_WO_OPER_DOCUMENTSParameters" sap:semantics="parameters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MaintOrderRoutingNumber"/>
+                    <PropertyRef Name="MaintOrderOperationCounter"/>
+                </Key>
+                <Property Name="MaintOrderRoutingNumber" Type="Edm.String" Nullable="false" DefaultValue="0000000000" MaxLength="10" sap:display-format="NonNegative" sap:parameter="mandatory" sap:label="Opertn task list no." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaintOrderOperationCounter" Type="Edm.String" Nullable="false" DefaultValue="00000000" MaxLength="8" sap:display-format="NonNegative" sap:parameter="mandatory" sap:label="Counter" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Set" Relationship="ZFIORI_EAM_APP_SRV.assoc_DBE6AB09074E11A5BA67B9BBEEBEC9D7" FromRole="FromRole_assoc_DBE6AB09074E11A5BA67B9BBEEBEC9D7" ToRole="ToRole_assoc_DBE6AB09074E11A5BA67B9BBEEBEC9D7"/>
+            </EntityType>
+            <EntityType Name="WOSubOperaList" sap:label="Work Order Sub operations List" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="OrderNumber"/>
+                    <PropertyRef Name="OperationNumber"/>
+                    <PropertyRef Name="OperationNo"/>
+                    <PropertyRef Name="MaintenanceOrderSubOperation"/>
+                </Key>
+                <Property Name="OrderNumber" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Order"/>
+                <Property Name="OperationNumber" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Activity"/>
+                <Property Name="OperationNo" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Operation Number" sap:quickinfo="Operation/Activity Number"/>
+                <Property Name="MaintenanceOrderSubOperation" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Sub.Op."/>
+                <Property Name="MaintOrderRoutingNumber" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="Opertn task list no." sap:quickinfo="Routing number of operations in the order"/>
+                <Property Name="MaintOrderOperationCounter" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Counter" sap:quickinfo="General counter for order"/>
+                <Property Name="OperationDescription" Type="Edm.String" MaxLength="40" sap:label="Operation Description" sap:quickinfo="Operation short text"/>
+                <Property Name="AttachmentCount" Type="Edm.Int32" sap:label="Attachment Count"/>
+                <Property Name="FinalConfirmed" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Final Confirmed?" sap:quickinfo="Boolean Variable (X = True, - = False, Space = Unknown)"/>
+                <Property Name="OperationIsScheduled" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Scheduling" sap:quickinfo="Indicator: Scheduling"/>
+                <Property Name="OperationIsIncludedInCosting" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Cost"/>
+                <Property Name="IfConfirmationrequired" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Confirmations" sap:quickinfo="Completion confirmation"/>
+                <Property Name="ProcessedOperation" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="External Processing" sap:quickinfo="Operation External Processing"/>
+                <Property Name="QualityInspection" Type="Edm.String" MaxLength="12" sap:display-format="NonNegative" sap:label="Quality Inspection" sap:quickinfo="Inspection Lot Number"/>
+                <Property Name="QualityInspectionVisible" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Quality Inspection Visible" sap:quickinfo="Boolean Variable (X = True, - = False, Space = Unknown)"/>
+                <Property Name="OperationControlKey" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Control key"/>
+                <NavigationProperty Name="Parameters" Relationship="ZFIORI_EAM_APP_SRV.assoc_7DD694251FEA7312606C60467124ADDA" FromRole="ToRole_assoc_7DD694251FEA7312606C60467124ADDA" ToRole="FromRole_assoc_7DD694251FEA7312606C60467124ADDA" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZEAM_C_WO_SUB_OPERATIONS_LISTParameters" sap:semantics="parameters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="OrderNumber"/>
+                    <PropertyRef Name="OperationNumber"/>
+                </Key>
+                <Property Name="OrderNumber" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Order" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="OperationNumber" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Activity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Set" Relationship="ZFIORI_EAM_APP_SRV.assoc_7DD694251FEA7312606C60467124ADDA" FromRole="FromRole_assoc_7DD694251FEA7312606C60467124ADDA" ToRole="ToRole_assoc_7DD694251FEA7312606C60467124ADDA"/>
+            </EntityType>
+            <EntityType Name="WOTileCounter" sap:label="Maintenance Order" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MaintenanceOrder"/>
+                </Key>
+                <Property Name="MaintenanceOrder" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Order" sap:quickinfo="Order Number"/>
+                <Property Name="MaintenanceOrderInternalID" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="Object number"/>
+                <Property Name="UserPersonnelNumber" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Personnel Number"/>
+                <Property Name="MaintenanceOrderType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Order Type"/>
+                <Property Name="WorkCenterAssigned" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Partner"/>
+                <Property Name="IsResponsible" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="IsUserResponsible" sap:quickinfo="Boolean Variable (X = True, - = False, Space = Unknown)"/>
+                <Property Name="MaintOrdBasicStartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Start Date" sap:quickinfo="Basic Start Date"/>
+                <Property Name="MaintOrdBasicEndDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="End Date" sap:quickinfo="Basic finish date"/>
+                <Property Name="MainWorkCenter" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Main Work Center" sap:quickinfo="Main work center for maintenance tasks"/>
+                <Property Name="ConcatenatedActiveSystStsName" Type="Edm.String" MaxLength="224" sap:label="System Status" sap:quickinfo="Concatenated System Status"/>
+                <Property Name="ConcatenatedActiveUserStsName" Type="Edm.String" MaxLength="224" sap:label="User Status" sap:quickinfo="Concatenated User Status"/>
+                <Property Name="MaintPriorityType" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Priority Type"/>
+                <Property Name="MaintOrderRoutingNumber" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="Opertn task list no." sap:quickinfo="Routing number of operations in the order"/>
+                <Property Name="WOPhase" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Phase" sap:quickinfo="Maintenance Processing Phase"/>
+                <Property Name="IsOrderAssigned" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Is Order Assigned" sap:quickinfo="Boolean Variable (X = True, - = False, Space = Unknown)"/>
+                <Property Name="OverdueOrdersCount" Type="Edm.String" MaxLength="8"/>
+                <Property Name="StartedOrdersCount" Type="Edm.String" MaxLength="8"/>
+                <Property Name="UnassignedOrdersCount" Type="Edm.String" MaxLength="8"/>
+                <NavigationProperty Name="to_ActiveSystemStatus" Relationship="ZFIORI_EAM_APP_SRV.assoc_C6AD63AD5983DC14DB0DAADE454387A7" FromRole="FromRole_assoc_C6AD63AD5983DC14DB0DAADE454387A7" ToRole="ToRole_assoc_C6AD63AD5983DC14DB0DAADE454387A7"/>
+                <NavigationProperty Name="to_ActiveUserStatus" Relationship="ZFIORI_EAM_APP_SRV.assoc_11257E94030222CCB74EAB6467827ACD" FromRole="FromRole_assoc_11257E94030222CCB74EAB6467827ACD" ToRole="ToRole_assoc_11257E94030222CCB74EAB6467827ACD"/>
+            </EntityType>
+            <EntityType Name="ZEAM_I_GET_ALL_ASSIGN_USERSType" sap:label="Get Assigned Users from Work Center" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="UserID"/>
+                    <PropertyRef Name="MaintObjectInternalID"/>
+                </Key>
+                <Property Name="UserID" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="User" sap:quickinfo="Communication Identification/Number"/>
+                <Property Name="MaintObjectInternalID" Type="Edm.String" Nullable="false" MaxLength="22" sap:display-format="UpperCase" sap:label="Object number"/>
+                <Property Name="PersonnelNumber" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Employee Number" sap:quickinfo="Personnel Number"/>
+                <Property Name="EmployeeName" Type="Edm.String" MaxLength="81" sap:label="Employee Name"/>
+                <Property Name="IsAssigned" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Boolean Variable (X = True, - = False, Space = Unknown)" sap:heading=""/>
+            </EntityType>
+            <EntityType Name="ZEAM_I_GET_ASSIGN_USERS_FRM_WCType" sap:label="Get Assigned Users from Work Center" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="UserID"/>
+                    <PropertyRef Name="MaintObjectInternalID"/>
+                </Key>
+                <Property Name="UserID" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="User" sap:quickinfo="Communication Identification/Number"/>
+                <Property Name="MaintObjectInternalID" Type="Edm.String" Nullable="false" MaxLength="22" sap:display-format="UpperCase" sap:label="Object number"/>
+                <Property Name="PersonnelNumber" Type="Edm.String" MaxLength="45" sap:display-format="UpperCase" sap:label="Employee Number" sap:quickinfo="ID of Related Object"/>
+                <Property Name="EmployeeName" Type="Edm.String" MaxLength="81" sap:label="Employee Name"/>
+                <Property Name="IsAssigned" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Boolean Variable (X = True, - = False, Space = Unknown)" sap:heading=""/>
+            </EntityType>
+            <EntityType Name="Locations" sap:label="Timesheet Locations - Table ZFI04_LOCATION" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="location"/>
+                </Key>
+                <Property Name="location" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Location"/>
+                <Property Name="locationDesc" Type="Edm.String" MaxLength="20" sap:label="Description" sap:quickinfo="Description of location"/>
+            </EntityType>
+            <EntityType Name="ZEAM_I_SUB_ORDERType" sap:label="Sub Order Header Data" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="OrderID"/>
+                    <PropertyRef Name="SubWorkOrder"/>
+                </Key>
+                <Property Name="OrderID" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Superior Order" sap:quickinfo="Number of Superior Order"/>
+                <Property Name="SubWorkOrder" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Sub Work Order" sap:quickinfo="Order Number"/>
+                <Property Name="OrderDescription" Type="Edm.String" MaxLength="40" sap:label="Description" sap:quickinfo="Order Description"/>
+            </EntityType>
+            <EntityType Name="UserContact" sap:label="User Contact Card" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="UserName"/>
+                </Key>
+                <Property Name="UserName" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="User" sap:quickinfo="User Name in User Master Record"/>
+                <Property Name="Person" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Person Number"/>
+                <Property Name="BusinessPartnerUUID" Type="Edm.Guid" sap:label="BP GUID" sap:quickinfo="Business Partner GUID"/>
+                <Property Name="FirstName" Type="Edm.String" MaxLength="40" sap:label="First Name" sap:quickinfo="First name"/>
+                <Property Name="LastName" Type="Edm.String" MaxLength="40" sap:label="Last Name" sap:quickinfo="Last name"/>
+                <Property Name="FullName" Type="Edm.String" MaxLength="80" sap:label="Full Name" sap:quickinfo="Full Name of Person"/>
+                <Property Name="AddressID" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Address Number"/>
+                <Property Name="PhoneNumber" Type="Edm.String" MaxLength="30" sap:label="Phone" sap:quickinfo="Contact Card Phone Number" sap:semantics="tel"/>
+                <Property Name="MobileNumber" Type="Edm.String" MaxLength="30" sap:label="Mobile" sap:quickinfo="Contact Card Mobile Phone Number" sap:semantics="tel"/>
+                <Property Name="EmailAddress" Type="Edm.String" MaxLength="241" sap:label="Email" sap:quickinfo="Contact Card E-Mail Address" sap:semantics="email"/>
+            </EntityType>
+            <EntityType Name="ZEAM_I_VarianceReasonType" sap:label="Variance Reason Code" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                    <PropertyRef Name="VarianceReasonCode"/>
+                </Key>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="VarianceReasonCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="VarianceReasonCode_Text" sap:label="Variance Reason" sap:quickinfo="Reason for Variance"/>
+                <Property Name="VarianceReasonCode_Text" Type="Edm.String" MaxLength="30" sap:label="Variance Reason Name" sap:quickinfo="Description of the Variance Reason" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="VarianceReasonName" Type="Edm.String" MaxLength="30" sap:label="Variance Reason Name" sap:quickinfo="Description of the Variance Reason"/>
+            </EntityType>
+            <EntityType Name="ZEAM_I_WO_ATTACHMENT_SHOWType" m:HasStream="true" sap:label="Attachment for Work Order" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MaintenanceOrder"/>
+                    <PropertyRef Name="instid_b"/>
+                </Key>
+                <Property Name="MaintenanceOrder" Type="Edm.String" Nullable="false" MaxLength="70" sap:label="Instance ID" sap:quickinfo="Instance Ident. in BOR Compat. Persistent Object References"/>
+                <Property Name="instid_b" Type="Edm.String" Nullable="false" MaxLength="70" sap:label="Instance ID" sap:quickinfo="Instance Ident. in BOR Compat. Persistent Object References"/>
+                <Property Name="CreatedDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created Date" sap:quickinfo="Date created"/>
+                <Property Name="AttachDesc" Type="Edm.String" MaxLength="50" sap:label="Description" sap:quickinfo="Short description of contents"/>
+                <Property Name="FileName" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="File Name" sap:quickinfo="Name of document, folder or distribution list"/>
+                <Property Name="CreatedTime" Type="Edm.Time" Precision="0" sap:label="Created Time" sap:quickinfo="Time of Last Change"/>
+                <Property Name="AttachType" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Type" sap:quickinfo="File extension for PC application"/>
+                <Property Name="AttachURL" Type="Edm.String" MaxLength="800" sap:label="URL"/>
+                <Property Name="HeaderType" Type="Edm.String" MaxLength="3"/>
+                <Property Name="AttachSize" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Size" sap:quickinfo="Size of Document Content"/>
+                <Property Name="Object_type" Type="Edm.String" MaxLength="32" sap:display-format="UpperCase" sap:label="Object Type" sap:quickinfo="Type of Objects in Persistent Object References"/>
+                <Property Name="CreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By"/>
+            </EntityType>
+            <EntityType Name="ZEAM_I_WO_COMPONENTSType" sap:label="Work Order Components" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="OrderNumber"/>
+                    <PropertyRef Name="Item"/>
+                    <PropertyRef Name="Reservation"/>
+                    <PropertyRef Name="ReservationItem"/>
+                    <PropertyRef Name="ReservationType"/>
+                    <PropertyRef Name="MaintenanceOrderOperation"/>
+                </Key>
+                <Property Name="OrderNumber" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Order" sap:quickinfo="Order Number"/>
+                <Property Name="Item" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Item" sap:quickinfo="BOM item number"/>
+                <Property Name="Reservation" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="NonNegative" sap:label="Reservation" sap:quickinfo="Number of reservation/dependent requirements"/>
+                <Property Name="ReservationItem" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Item no." sap:quickinfo="Item Number of Reservation / Dependent Requirements"/>
+                <Property Name="ReservationType" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Record type"/>
+                <Property Name="MaintenanceOrderOperation" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Operation" sap:quickinfo="Operation/Activity Number"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Material (Mfg partner)" sap:quickinfo="Material Number"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="40" sap:label="Material Description" sap:quickinfo="BOM Item Text (Line 1)"/>
+                <Property Name="RequiredQty" Type="Edm.Decimal" Precision="13" Scale="0" sap:label="Required Quantity"/>
+                <Property Name="WithdrawnQty" Type="Edm.Decimal" Precision="13" Scale="0" sap:label="Withdrawn Quantity"/>
+                <Property Name="UnitOfMeasure" Type="Edm.String" MaxLength="3" sap:label="Unit of Measure" sap:quickinfo="Base Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="IC" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="IC" sap:quickinfo="Item category (bill of material)"/>
+                <Property Name="Act" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Act (Operation)" sap:quickinfo="Operation/Activity Number"/>
+                <Property Name="Recipient" Type="Edm.String" MaxLength="12" sap:label="Recipient" sap:quickinfo="Goods Recipient"/>
+                <Property Name="Batch" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Batch" sap:quickinfo="Batch Number"/>
+                <Property Name="UnloadingPoint" Type="Edm.String" MaxLength="25" sap:label="Unloading point" sap:quickinfo="Unloading Point"/>
+                <Property Name="SupplyProcessDesc" Type="Edm.String" MaxLength="40" sap:label="Supply Process Desc" sap:quickinfo="Supply process text"/>
+                <Property Name="CompDeleted" Type="Edm.String" MaxLength="1"/>
+                <Property Name="StorageLocation" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Storage Location" sap:quickinfo="Storage location"/>
+                <Property Name="Stock" Type="Edm.Decimal" Precision="13" Scale="0" sap:label="Stock"/>
+                <Property Name="Manufacturer" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Manufacturer" sap:quickinfo="Manufacturer number"/>
+                <Property Name="ManufacturerName" Type="Edm.String" MaxLength="35" sap:label="Manufacturer Name" sap:quickinfo="Name 1"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+            </EntityType>
+            <EntityType Name="ZEAM_I_WO_OBJECT_LISTType" sap:label="CDS view to retrieve object list of a maintenance order" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MaintenanceOrder"/>
+                    <PropertyRef Name="FunctionalLocation"/>
+                    <PropertyRef Name="Equipment"/>
+                </Key>
+                <Property Name="MaintenanceOrder" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Order" sap:quickinfo="Order Number"/>
+                <Property Name="FunctionalLocation" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Functional Location"/>
+                <Property Name="Equipment" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="Equipment"/>
+                <Property Name="EquipmentDesc" Type="Edm.String" MaxLength="40" sap:label="Equipment Desc" sap:quickinfo="Description of technical object"/>
+                <Property Name="WareHouse" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="WareHouse" sap:quickinfo="Plant"/>
+                <Property Name="StorageLocation" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Storage Location" sap:quickinfo="Storage location"/>
+                <Property Name="StorageLocationName" Type="Edm.String" MaxLength="16" sap:label="Storage Location Desc" sap:quickinfo="Storage Location Name"/>
+                <Property Name="FunctionalLocationDesc" Type="Edm.String" MaxLength="40" sap:label="Functional Location Desc" sap:quickinfo="Description of functional location"/>
+                <Property Name="SerialNumber" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Serial No." sap:quickinfo="Serial Number"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number" sap:value-list="standard"/>
+                <Property Name="MaintenancePlant" Type="Edm.String" MaxLength="4" sap:label="Plant"/>
+                <Property Name="MaintenancePhase" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Phase" sap:quickinfo="Maintenance Processing Phase"/>
+                <Property Name="MaterialDesc" Type="Edm.String" MaxLength="40" sap:label="Material Desc" sap:quickinfo="Material Description"/>
+                <Property Name="CustomerTag" Type="Edm.String" MaxLength="25" sap:display-format="UpperCase" sap:label="Customer TAG" sap:quickinfo="Technical identification number"/>
+                <Property Name="MaintObjectLocAcctAssgmtNmbr" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Loc/Acct Assignment" sap:quickinfo="Location and account assignment for technical object"/>
+                <Property Name="FromObject" Type="Edm.String" MaxLength="1"/>
+            </EntityType>
+            <EntityType Name="ZEAM_I_WO_OPERATIONS_LISTType" sap:label="Work Order Components" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="OrderNumber"/>
+                    <PropertyRef Name="OperationNumber"/>
+                </Key>
+                <Property Name="OrderNumber" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Order" sap:quickinfo="Order Number"/>
+                <Property Name="OperationNumber" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Operation Number" sap:quickinfo="Operation/Activity Number"/>
+                <Property Name="MaintOrderRoutingNumber" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="Opertn task list no." sap:quickinfo="Routing number of operations in the order"/>
+                <Property Name="MaintOrderOperationCounter" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Counter" sap:quickinfo="General counter for order"/>
+                <Property Name="OperationDescription" Type="Edm.String" MaxLength="40" sap:label="Operation Description" sap:quickinfo="Operation short text"/>
+                <Property Name="ExecutingWorkCenter" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Operation Work Center" sap:quickinfo="Work Center" sap:value-list="standard"/>
+                <Property Name="PlannedPersons" Type="Edm.Byte" sap:label="Planned Persons" sap:quickinfo="Number of capacities required"/>
+                <Property Name="PlannedWork" Type="Edm.Decimal" Precision="7" Scale="1" sap:unit="P5FC2B3661DDD749212A14054A1B70579" sap:label="Planned Work" sap:quickinfo="Work involved in the activity"/>
+                <Property Name="PlannedWorkUnit" Type="Edm.String" MaxLength="3" sap:label="Planned Work Unit" sap:quickinfo="Unit for work" sap:semantics="unit-of-measure"/>
+                <Property Name="Duration" Type="Edm.Decimal" Precision="5" Scale="1" sap:unit="PE25A9DFB854B9AEB20DADCE6429C713C" sap:label="Duration" sap:quickinfo="Normal duration of the activity"/>
+                <Property Name="DurationUnit" Type="Edm.String" MaxLength="3" sap:label="Duration Unit" sap:quickinfo="Normal duration/unit" sap:semantics="unit-of-measure"/>
+                <Property Name="ActualWork" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="P5FC2B3661DDD749212A14054A1B70579" sap:label="Work Executed" sap:quickinfo="Actual work"/>
+                <Property Name="ActivityType" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Activity Type"/>
+                <Property Name="MaintenanceItemObjectList" Type="Edm.Int64" sap:label="Object list" sap:quickinfo="Object list number"/>
+                <Property Name="EarliestStart" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Earliest start date" sap:quickinfo="Earliest scheduled start: Execution (date)"/>
+                <Property Name="Confirmation" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="Confirmation" sap:quickinfo="Completion confirmation number for the operation"/>
+                <Property Name="FinalConfirmed" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Final Confirmed?" sap:quickinfo="Boolean Variable (X = True, - = False, Space = Unknown)"/>
+                <Property Name="StandardTextKey" Type="Edm.String" MaxLength="7" sap:display-format="UpperCase" sap:label="Standard Text Key" sap:quickinfo="Standard text key"/>
+                <Property Name="EarliestEnd" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Earliest finish date" sap:quickinfo="Earliest scheduled finish: Execution (date)"/>
+                <Property Name="OperationControlKey" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Control key"/>
+                <Property Name="PlanningPlant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="ApplTaskList" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Application" sap:quickinfo="Application of the task list"/>
+                <Property Name="OperationIsScheduled" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Scheduling" sap:quickinfo="Indicator: Scheduling"/>
+                <Property Name="OperationIsIncludedInCosting" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Cost"/>
+                <Property Name="IfConfirmationrequired" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Confirmations" sap:quickinfo="Completion confirmation"/>
+                <Property Name="ProcessedOperation" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="External Processing" sap:quickinfo="Operation External Processing"/>
+                <Property Name="IsDeleted" Type="Edm.String" MaxLength="1"/>
+            </EntityType>
+            <EntityType Name="ZEAM_I_WO_OPERA_CONF_DETType" sap:label="Work Order Operations Final Conf" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="OrderNumber"/>
+                    <PropertyRef Name="Confirmation"/>
+                    <PropertyRef Name="Counter"/>
+                </Key>
+                <Property Name="OrderNumber" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Order" sap:quickinfo="Order Number"/>
+                <Property Name="Confirmation" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="NonNegative" sap:label="Confirmation" sap:quickinfo="Completion confirmation number for the operation"/>
+                <Property Name="Counter" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="Counter" sap:quickinfo="Confirmation counter"/>
+                <Property Name="FinalConfirmation" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Final Confirmation" sap:quickinfo="Boolean Variable (X = True, - = False, Space = Unknown)"/>
+                <Property Name="Cancelled" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Cancelled" sap:quickinfo="Boolean Variable (X = True, - = False, Space = Unknown)"/>
+                <Property Name="RemainingWork" Type="Edm.Decimal" Precision="7" Scale="1" sap:label="Remaining Work" sap:quickinfo="Remaining work"/>
+                <Property Name="RemainingWorkUnit" Type="Edm.String" MaxLength="3" sap:label="Remaining Work Unit" sap:quickinfo="Unit of Measure for Remaining Work" sap:semantics="unit-of-measure"/>
+                <Property Name="ActualWork" Type="Edm.Decimal" Precision="7" Scale="1" sap:label="Actual Work" sap:quickinfo="Actual work"/>
+                <Property Name="ActualWorkUnit" Type="Edm.String" MaxLength="3" sap:label="Actual Work Unit" sap:quickinfo="Unit for work" sap:semantics="unit-of-measure"/>
+                <Property Name="ChangedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="User who Entered the Confirmation"/>
+                <Property Name="TextExists" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Boolean Variable (X = True, - = False, Space = Unknown)" sap:heading=""/>
+                <Property Name="ConfirmText" Type="Edm.String" MaxLength="40" sap:label="Comment" sap:quickinfo="Confirmation text"/>
+            </EntityType>
+            <EntityType Name="ZEAM_I_WO_OPER_DOCUMENTSType" m:HasStream="true" sap:label="Documents for MAintenance Item" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MaintOrderRoutingNumber"/>
+                    <PropertyRef Name="MaintOrderOperationCounter"/>
+                    <PropertyRef Name="instid_b"/>
+                    <PropertyRef Name="Counter"/>
+                    <PropertyRef Name="DocumentType"/>
+                    <PropertyRef Name="DocumentNumber"/>
+                    <PropertyRef Name="DocumentVersion"/>
+                    <PropertyRef Name="DocumentPart"/>
+                </Key>
+                <Property Name="MaintOrderRoutingNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="NonNegative" sap:label="Opertn task list no." sap:quickinfo="Routing number of operations in the order"/>
+                <Property Name="MaintOrderOperationCounter" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="Counter" sap:quickinfo="Internal counter"/>
+                <Property Name="instid_b" Type="Edm.String" Nullable="false" MaxLength="25" sap:display-format="UpperCase" sap:label="Document" sap:quickinfo="Document number"/>
+                <Property Name="Counter" Type="Edm.Int32" Nullable="false" sap:label="Counter" sap:quickinfo="Counter for documents"/>
+                <Property Name="DocumentType" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Document Type"/>
+                <Property Name="DocumentNumber" Type="Edm.String" Nullable="false" MaxLength="25" sap:display-format="UpperCase" sap:label="Document" sap:quickinfo="Document number"/>
+                <Property Name="DocumentVersion" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Document Version"/>
+                <Property Name="DocumentPart" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Document Part"/>
+                <Property Name="CreatedDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="AttachDesc" Type="Edm.String" MaxLength="40" sap:label="Description" sap:quickinfo="Document Description"/>
+                <Property Name="CreatedTime" Type="Edm.Time" Precision="0"/>
+                <Property Name="AttachType" Type="Edm.String" MaxLength="15" sap:label="Attribute feature (short version)" sap:heading=""/>
+                <Property Name="CreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By"/>
+                <Property Name="file_url" Type="Edm.String" MaxLength="88"/>
+            </EntityType>
+            <ComplexType Name="MessagesReturn">
+                <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Message type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Message Class" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Number" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Message Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="220" sap:label="Message Text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LogNo" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Log number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LogMsgNo" Type="Edm.String" Nullable="false" MaxLength="6" sap:label="Message no." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MessageV1" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Message Variable" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MessageV2" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Message Variable" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MessageV3" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Message Variable" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MessageV4" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Message Variable" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </ComplexType>
+            <Association Name="assoc_7615A4CBA7018B355ABC4DB279BD9C36" sap:content-version="1">
+                <End Type="ZFIORI_EAM_APP_SRV.WorkOrderOperDetail" Multiplicity="1" Role="FromRole_assoc_7615A4CBA7018B355ABC4DB279BD9C36"/>
+                <End Type="ZFIORI_EAM_APP_SRV.ZEAM_I_WO_OBJECT_LISTType" Multiplicity="*" Role="ToRole_assoc_7615A4CBA7018B355ABC4DB279BD9C36"/>
+            </Association>
+            <Association Name="assoc_99F1B80B33890B9FFD4CEABF41BD2911" sap:content-version="1">
+                <End Type="ZFIORI_EAM_APP_SRV.WorkOrderOperDetail" Multiplicity="1" Role="FromRole_assoc_99F1B80B33890B9FFD4CEABF41BD2911"/>
+                <End Type="ZFIORI_EAM_APP_SRV.ZEAM_I_WO_OPER_DOCUMENTSType" Multiplicity="*" Role="ToRole_assoc_99F1B80B33890B9FFD4CEABF41BD2911"/>
+            </Association>
+            <Association Name="assoc_592229B1317351951957433C628E9910" sap:content-version="1">
+                <End Type="ZFIORI_EAM_APP_SRV.WorkOrderOperDetail" Multiplicity="1" Role="FromRole_assoc_592229B1317351951957433C628E9910"/>
+                <End Type="ZFIORI_EAM_APP_SRV.ZEAM_I_WO_COMPONENTSType" Multiplicity="*" Role="ToRole_assoc_592229B1317351951957433C628E9910"/>
+            </Association>
+            <Association Name="assoc_89B1D043275DDC5C4F40A8442C014022" sap:content-version="1">
+                <End Type="ZFIORI_EAM_APP_SRV.WorkOrderOperDetail" Multiplicity="1" Role="FromRole_assoc_89B1D043275DDC5C4F40A8442C014022"/>
+                <End Type="ZFIORI_EAM_APP_SRV.ZEAM_I_WO_OPERA_CONF_DETType" Multiplicity="*" Role="ToRole_assoc_89B1D043275DDC5C4F40A8442C014022"/>
+            </Association>
+            <Association Name="assoc_8D03B52C021630150C7469BBF559236A" sap:content-version="1">
+                <End Type="ZFIORI_EAM_APP_SRV.WorkOrderOperDetail" Multiplicity="1" Role="FromRole_assoc_8D03B52C021630150C7469BBF559236A"/>
+                <End Type="ZFIORI_EAM_APP_SRV.ZEAM_I_VarianceReasonType" Multiplicity="*" Role="ToRole_assoc_8D03B52C021630150C7469BBF559236A"/>
+            </Association>
+            <Association Name="assoc_DBE6AB09074E11A5BA67B9BBEEBEC9D7" sap:content-version="1">
+                <End Type="ZFIORI_EAM_APP_SRV.ZEAM_C_WO_OPER_DOCUMENTSParameters" Multiplicity="1" Role="FromRole_assoc_DBE6AB09074E11A5BA67B9BBEEBEC9D7"/>
+                <End Type="ZFIORI_EAM_APP_SRV.WorkOrdSubOperDoc" Multiplicity="*" Role="ToRole_assoc_DBE6AB09074E11A5BA67B9BBEEBEC9D7"/>
+            </Association>
+            <Association Name="assoc_323501EED4F7FB533FE8E7CE9250380B" sap:content-version="1">
+                <End Type="ZFIORI_EAM_APP_SRV.WorkOrderDetail" Multiplicity="1" Role="FromRole_assoc_323501EED4F7FB533FE8E7CE9250380B"/>
+                <End Type="ZFIORI_EAM_APP_SRV.ZEAM_I_GET_ALL_ASSIGN_USERSType" Multiplicity="*" Role="ToRole_assoc_323501EED4F7FB533FE8E7CE9250380B"/>
+            </Association>
+            <Association Name="assoc_BC549BDC89B0A9505402135B9D808762" sap:content-version="1">
+                <End Type="ZFIORI_EAM_APP_SRV.WorkOrderDetail" Multiplicity="1" Role="FromRole_assoc_BC549BDC89B0A9505402135B9D808762"/>
+                <End Type="ZFIORI_EAM_APP_SRV.ZEAM_I_GET_ASSIGN_USERS_FRM_WCType" Multiplicity="*" Role="ToRole_assoc_BC549BDC89B0A9505402135B9D808762"/>
+            </Association>
+            <Association Name="assoc_54E567B3FDABB212F09D8A2FAEECC239" sap:content-version="1">
+                <End Type="ZFIORI_EAM_APP_SRV.WorkOrderDetail" Multiplicity="1" Role="FromRole_assoc_54E567B3FDABB212F09D8A2FAEECC239"/>
+                <End Type="ZFIORI_EAM_APP_SRV.ZEAM_I_SUB_ORDERType" Multiplicity="*" Role="ToRole_assoc_54E567B3FDABB212F09D8A2FAEECC239"/>
+            </Association>
+            <Association Name="assoc_B6D26E5BB572F61FB3673C4966EF3F02" sap:content-version="1">
+                <End Type="ZFIORI_EAM_APP_SRV.WorkOrderDetail" Multiplicity="1" Role="FromRole_assoc_B6D26E5BB572F61FB3673C4966EF3F02"/>
+                <End Type="ZFIORI_EAM_APP_SRV.ZEAM_I_WO_ATTACHMENT_SHOWType" Multiplicity="*" Role="ToRole_assoc_B6D26E5BB572F61FB3673C4966EF3F02"/>
+            </Association>
+            <Association Name="assoc_81F30BDC1AE2A64349CF352F6C5BC2D4" sap:content-version="1">
+                <End Type="ZFIORI_EAM_APP_SRV.WorkOrderDetail" Multiplicity="1" Role="FromRole_assoc_81F30BDC1AE2A64349CF352F6C5BC2D4"/>
+                <End Type="ZFIORI_EAM_APP_SRV.ZEAM_I_WO_COMPONENTSType" Multiplicity="*" Role="ToRole_assoc_81F30BDC1AE2A64349CF352F6C5BC2D4"/>
+            </Association>
+            <Association Name="assoc_A1A63CF521321F0EBD012C1A5A106B5A" sap:content-version="1">
+                <End Type="ZFIORI_EAM_APP_SRV.WorkOrderDetail" Multiplicity="1" Role="FromRole_assoc_A1A63CF521321F0EBD012C1A5A106B5A"/>
+                <End Type="ZFIORI_EAM_APP_SRV.ZEAM_I_WO_OBJECT_LISTType" Multiplicity="*" Role="ToRole_assoc_A1A63CF521321F0EBD012C1A5A106B5A"/>
+            </Association>
+            <Association Name="assoc_D13FE77D235002ACC403A6837CE8A8E3" sap:content-version="1">
+                <End Type="ZFIORI_EAM_APP_SRV.WorkOrderDetail" Multiplicity="1" Role="FromRole_assoc_D13FE77D235002ACC403A6837CE8A8E3"/>
+                <End Type="ZFIORI_EAM_APP_SRV.ZEAM_I_WO_OPERATIONS_LISTType" Multiplicity="*" Role="ToRole_assoc_D13FE77D235002ACC403A6837CE8A8E3"/>
+            </Association>
+            <Association Name="assoc_27A1154D2AF122720726596782BA5B4F" sap:content-version="1">
+                <End Type="ZFIORI_EAM_APP_SRV.WorkOrderDetail" Multiplicity="1" Role="FromRole_assoc_27A1154D2AF122720726596782BA5B4F"/>
+                <End Type="ZFIORI_EAM_APP_SRV.ZEAM_I_WO_OPERA_CONF_DETType" Multiplicity="*" Role="ToRole_assoc_27A1154D2AF122720726596782BA5B4F"/>
+            </Association>
+            <Association Name="assoc_7DD694251FEA7312606C60467124ADDA" sap:content-version="1">
+                <End Type="ZFIORI_EAM_APP_SRV.ZEAM_C_WO_SUB_OPERATIONS_LISTParameters" Multiplicity="1" Role="FromRole_assoc_7DD694251FEA7312606C60467124ADDA"/>
+                <End Type="ZFIORI_EAM_APP_SRV.WOSubOperaList" Multiplicity="*" Role="ToRole_assoc_7DD694251FEA7312606C60467124ADDA"/>
+            </Association>
+            <Association Name="assoc_14763945C8482860E4D6BE86E1D019F6" sap:content-version="1">
+                <End Type="ZFIORI_EAM_APP_SRV.ZEAM_C_ADD_MATERIALParameters" Multiplicity="1" Role="FromRole_assoc_14763945C8482860E4D6BE86E1D019F6"/>
+                <End Type="ZFIORI_EAM_APP_SRV.AddMaterial" Multiplicity="*" Role="ToRole_assoc_14763945C8482860E4D6BE86E1D019F6"/>
+            </Association>
+            <Association Name="assoc_8E48F0B12568D02580C6140BA4A10AC4" sap:content-version="1">
+                <End Type="ZFIORI_EAM_APP_SRV.ZEAM_C_WORK_ORDER_LISTParameters" Multiplicity="1" Role="FromRole_assoc_8E48F0B12568D02580C6140BA4A10AC4"/>
+                <End Type="ZFIORI_EAM_APP_SRV.WorkOrderList" Multiplicity="*" Role="ToRole_assoc_8E48F0B12568D02580C6140BA4A10AC4"/>
+            </Association>
+            <Association Name="assoc_5F48D2A06860331ED8BF1E40313702F5" sap:content-version="1">
+                <End Type="ZFIORI_EAM_APP_SRV.WorkOrderList" Multiplicity="1" Role="FromRole_assoc_5F48D2A06860331ED8BF1E40313702F5"/>
+                <End Type="ZFIORI_EAM_APP_SRV.C_StsObjActiveStatusCodeTextType" Multiplicity="*" Role="ToRole_assoc_5F48D2A06860331ED8BF1E40313702F5"/>
+            </Association>
+            <Association Name="assoc_CEB5D115F1B59378685CCA73931917EF" sap:content-version="1">
+                <End Type="ZFIORI_EAM_APP_SRV.WorkOrderList" Multiplicity="1" Role="FromRole_assoc_CEB5D115F1B59378685CCA73931917EF"/>
+                <End Type="ZFIORI_EAM_APP_SRV.C_StsObjActiveStatusCodeTextType" Multiplicity="*" Role="ToRole_assoc_CEB5D115F1B59378685CCA73931917EF"/>
+            </Association>
+            <Association Name="assoc_C6AD63AD5983DC14DB0DAADE454387A7" sap:content-version="1">
+                <End Type="ZFIORI_EAM_APP_SRV.WOTileCounter" Multiplicity="1" Role="FromRole_assoc_C6AD63AD5983DC14DB0DAADE454387A7"/>
+                <End Type="ZFIORI_EAM_APP_SRV.C_StsObjActiveStatusCodeTextType" Multiplicity="*" Role="ToRole_assoc_C6AD63AD5983DC14DB0DAADE454387A7"/>
+            </Association>
+            <Association Name="assoc_11257E94030222CCB74EAB6467827ACD" sap:content-version="1">
+                <End Type="ZFIORI_EAM_APP_SRV.WOTileCounter" Multiplicity="1" Role="FromRole_assoc_11257E94030222CCB74EAB6467827ACD"/>
+                <End Type="ZFIORI_EAM_APP_SRV.C_StsObjActiveStatusCodeTextType" Multiplicity="*" Role="ToRole_assoc_11257E94030222CCB74EAB6467827ACD"/>
+            </Association>
+            <EntityContainer Name="ZFIORI_EAM_APP_SRV_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="LongTextGetSet" EntityType="ZFIORI_EAM_APP_SRV.LongTextGet" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="MessageReturnSet" EntityType="ZFIORI_EAM_APP_SRV.MessageReturn" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="MessagesReturnSet" EntityType="ZFIORI_EAM_APP_SRV.MessageReturn" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="CheckAppsAccessSet" EntityType="ZFIORI_EAM_APP_SRV.CheckAppsAccess" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="C_StsObjActiveStatusCodeText" EntityType="ZFIORI_EAM_APP_SRV.C_StsObjActiveStatusCodeTextType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="I_Customer_VH" EntityType="ZFIORI_EAM_APP_SRV.I_Customer_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_FunctionalLocationStdVH" EntityType="ZFIORI_EAM_APP_SRV.I_FunctionalLocationStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_MaintActyTypeStdVH" EntityType="ZFIORI_EAM_APP_SRV.I_MaintActyTypeStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="I_MaintenanceRevisionStdVH" EntityType="ZFIORI_EAM_APP_SRV.I_MaintenanceRevisionStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_MaintPlnrGrpStdVH" EntityType="ZFIORI_EAM_APP_SRV.I_MaintPlnrGrpStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_MaterialStdVH" EntityType="ZFIORI_EAM_APP_SRV.I_MaterialStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_PersWrkAgrmtSrchHelp" EntityType="ZFIORI_EAM_APP_SRV.I_PersWrkAgrmtSrchHelpType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_PlantStdVH" EntityType="ZFIORI_EAM_APP_SRV.I_PlantStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_SalesOrderItemStdVH" EntityType="ZFIORI_EAM_APP_SRV.I_SalesOrderItemStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="I_SalesOrderStdVH" EntityType="ZFIORI_EAM_APP_SRV.I_SalesOrderStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_StorageLocation" EntityType="ZFIORI_EAM_APP_SRV.I_StorageLocationType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_WrkCtrBySemanticKeyStdVH" EntityType="ZFIORI_EAM_APP_SRV.I_WrkCtrBySemanticKeyStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZEAM_C_ADD_MATERIALSet" EntityType="ZFIORI_EAM_APP_SRV.AddMaterial" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="AddMaterialSet" EntityType="ZFIORI_EAM_APP_SRV.ZEAM_C_ADD_MATERIALParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="EquipmentListSet" EntityType="ZFIORI_EAM_APP_SRV.EquipmentList" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZEAM_C_START_TIME" EntityType="ZFIORI_EAM_APP_SRV.ZEAM_C_START_TIMEType" sap:content-version="1"/>
+                <EntitySet Name="LoginUserCheckSet" EntityType="ZFIORI_EAM_APP_SRV.LoginUserCheck" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="WorkOrderDetailSet" EntityType="ZFIORI_EAM_APP_SRV.WorkOrderDetail" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZEAM_C_WORK_ORDER_LISTSet" EntityType="ZFIORI_EAM_APP_SRV.WorkOrderList" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="WorkOrderListSet" EntityType="ZFIORI_EAM_APP_SRV.ZEAM_C_WORK_ORDER_LISTParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="WorkOrderOperDetailSet" EntityType="ZFIORI_EAM_APP_SRV.WorkOrderOperDetail" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZEAM_C_WO_OPER_DOCUMENTSSet" EntityType="ZFIORI_EAM_APP_SRV.WorkOrdSubOperDoc" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="WorkOrdSubOperDocSet" EntityType="ZFIORI_EAM_APP_SRV.ZEAM_C_WO_OPER_DOCUMENTSParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZEAM_C_WO_SUB_OPERATIONS_LISTSet" EntityType="ZFIORI_EAM_APP_SRV.WOSubOperaList" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="WOSubOperaListSet" EntityType="ZFIORI_EAM_APP_SRV.ZEAM_C_WO_SUB_OPERATIONS_LISTParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="WOTileCounterSet" EntityType="ZFIORI_EAM_APP_SRV.WOTileCounter" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZEAM_I_GET_ALL_ASSIGN_USERS" EntityType="ZFIORI_EAM_APP_SRV.ZEAM_I_GET_ALL_ASSIGN_USERSType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZEAM_I_GET_ASSIGN_USERS_FRM_WC" EntityType="ZFIORI_EAM_APP_SRV.ZEAM_I_GET_ASSIGN_USERS_FRM_WCType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="LocationsSet" EntityType="ZFIORI_EAM_APP_SRV.Locations" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZEAM_I_SUB_ORDER" EntityType="ZFIORI_EAM_APP_SRV.ZEAM_I_SUB_ORDERType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="UserContactSet" EntityType="ZFIORI_EAM_APP_SRV.UserContact" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZEAM_I_VarianceReason" EntityType="ZFIORI_EAM_APP_SRV.ZEAM_I_VarianceReasonType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZEAM_I_WO_ATTACHMENT_SHOW" EntityType="ZFIORI_EAM_APP_SRV.ZEAM_I_WO_ATTACHMENT_SHOWType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZEAM_I_WO_COMPONENTS" EntityType="ZFIORI_EAM_APP_SRV.ZEAM_I_WO_COMPONENTSType" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZEAM_I_WO_OBJECT_LIST" EntityType="ZFIORI_EAM_APP_SRV.ZEAM_I_WO_OBJECT_LISTType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZEAM_I_WO_OPERATIONS_LIST" EntityType="ZFIORI_EAM_APP_SRV.ZEAM_I_WO_OPERATIONS_LISTType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZEAM_I_WO_OPERA_CONF_DET" EntityType="ZFIORI_EAM_APP_SRV.ZEAM_I_WO_OPERA_CONF_DETType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZEAM_I_WO_OPER_DOCUMENTS" EntityType="ZFIORI_EAM_APP_SRV.ZEAM_I_WO_OPER_DOCUMENTSType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_89B1D043275DDC5C4F40A8442C014022" Association="ZFIORI_EAM_APP_SRV.assoc_89B1D043275DDC5C4F40A8442C014022" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="WorkOrderOperDetailSet" Role="FromRole_assoc_89B1D043275DDC5C4F40A8442C014022"/>
+                    <End EntitySet="ZEAM_I_WO_OPERA_CONF_DET" Role="ToRole_assoc_89B1D043275DDC5C4F40A8442C014022"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_BC549BDC89B0A9505402135B9D808762" Association="ZFIORI_EAM_APP_SRV.assoc_BC549BDC89B0A9505402135B9D808762" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="WorkOrderDetailSet" Role="FromRole_assoc_BC549BDC89B0A9505402135B9D808762"/>
+                    <End EntitySet="ZEAM_I_GET_ASSIGN_USERS_FRM_WC" Role="ToRole_assoc_BC549BDC89B0A9505402135B9D808762"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_D13FE77D235002ACC403A6837CE8A8E3" Association="ZFIORI_EAM_APP_SRV.assoc_D13FE77D235002ACC403A6837CE8A8E3" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="WorkOrderDetailSet" Role="FromRole_assoc_D13FE77D235002ACC403A6837CE8A8E3"/>
+                    <End EntitySet="ZEAM_I_WO_OPERATIONS_LIST" Role="ToRole_assoc_D13FE77D235002ACC403A6837CE8A8E3"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_8E48F0B12568D02580C6140BA4A10AC4" Association="ZFIORI_EAM_APP_SRV.assoc_8E48F0B12568D02580C6140BA4A10AC4" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="WorkOrderListSet" Role="FromRole_assoc_8E48F0B12568D02580C6140BA4A10AC4"/>
+                    <End EntitySet="ZEAM_C_WORK_ORDER_LISTSet" Role="ToRole_assoc_8E48F0B12568D02580C6140BA4A10AC4"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_7DD694251FEA7312606C60467124ADDA" Association="ZFIORI_EAM_APP_SRV.assoc_7DD694251FEA7312606C60467124ADDA" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="WOSubOperaListSet" Role="FromRole_assoc_7DD694251FEA7312606C60467124ADDA"/>
+                    <End EntitySet="ZEAM_C_WO_SUB_OPERATIONS_LISTSet" Role="ToRole_assoc_7DD694251FEA7312606C60467124ADDA"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_592229B1317351951957433C628E9910" Association="ZFIORI_EAM_APP_SRV.assoc_592229B1317351951957433C628E9910" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="WorkOrderOperDetailSet" Role="FromRole_assoc_592229B1317351951957433C628E9910"/>
+                    <End EntitySet="ZEAM_I_WO_COMPONENTS" Role="ToRole_assoc_592229B1317351951957433C628E9910"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_C6AD63AD5983DC14DB0DAADE454387A7" Association="ZFIORI_EAM_APP_SRV.assoc_C6AD63AD5983DC14DB0DAADE454387A7" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="WOTileCounterSet" Role="FromRole_assoc_C6AD63AD5983DC14DB0DAADE454387A7"/>
+                    <End EntitySet="C_StsObjActiveStatusCodeText" Role="ToRole_assoc_C6AD63AD5983DC14DB0DAADE454387A7"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_5F48D2A06860331ED8BF1E40313702F5" Association="ZFIORI_EAM_APP_SRV.assoc_5F48D2A06860331ED8BF1E40313702F5" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZEAM_C_WORK_ORDER_LISTSet" Role="FromRole_assoc_5F48D2A06860331ED8BF1E40313702F5"/>
+                    <End EntitySet="C_StsObjActiveStatusCodeText" Role="ToRole_assoc_5F48D2A06860331ED8BF1E40313702F5"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_99F1B80B33890B9FFD4CEABF41BD2911" Association="ZFIORI_EAM_APP_SRV.assoc_99F1B80B33890B9FFD4CEABF41BD2911" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="WorkOrderOperDetailSet" Role="FromRole_assoc_99F1B80B33890B9FFD4CEABF41BD2911"/>
+                    <End EntitySet="ZEAM_I_WO_OPER_DOCUMENTS" Role="ToRole_assoc_99F1B80B33890B9FFD4CEABF41BD2911"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_CEB5D115F1B59378685CCA73931917EF" Association="ZFIORI_EAM_APP_SRV.assoc_CEB5D115F1B59378685CCA73931917EF" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZEAM_C_WORK_ORDER_LISTSet" Role="FromRole_assoc_CEB5D115F1B59378685CCA73931917EF"/>
+                    <End EntitySet="C_StsObjActiveStatusCodeText" Role="ToRole_assoc_CEB5D115F1B59378685CCA73931917EF"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_11257E94030222CCB74EAB6467827ACD" Association="ZFIORI_EAM_APP_SRV.assoc_11257E94030222CCB74EAB6467827ACD" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="WOTileCounterSet" Role="FromRole_assoc_11257E94030222CCB74EAB6467827ACD"/>
+                    <End EntitySet="C_StsObjActiveStatusCodeText" Role="ToRole_assoc_11257E94030222CCB74EAB6467827ACD"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_8D03B52C021630150C7469BBF559236A" Association="ZFIORI_EAM_APP_SRV.assoc_8D03B52C021630150C7469BBF559236A" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="WorkOrderOperDetailSet" Role="FromRole_assoc_8D03B52C021630150C7469BBF559236A"/>
+                    <End EntitySet="ZEAM_I_VarianceReason" Role="ToRole_assoc_8D03B52C021630150C7469BBF559236A"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_7615A4CBA7018B355ABC4DB279BD9C36" Association="ZFIORI_EAM_APP_SRV.assoc_7615A4CBA7018B355ABC4DB279BD9C36" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="WorkOrderOperDetailSet" Role="FromRole_assoc_7615A4CBA7018B355ABC4DB279BD9C36"/>
+                    <End EntitySet="ZEAM_I_WO_OBJECT_LIST" Role="ToRole_assoc_7615A4CBA7018B355ABC4DB279BD9C36"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_54E567B3FDABB212F09D8A2FAEECC239" Association="ZFIORI_EAM_APP_SRV.assoc_54E567B3FDABB212F09D8A2FAEECC239" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="WorkOrderDetailSet" Role="FromRole_assoc_54E567B3FDABB212F09D8A2FAEECC239"/>
+                    <End EntitySet="ZEAM_I_SUB_ORDER" Role="ToRole_assoc_54E567B3FDABB212F09D8A2FAEECC239"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_DBE6AB09074E11A5BA67B9BBEEBEC9D7" Association="ZFIORI_EAM_APP_SRV.assoc_DBE6AB09074E11A5BA67B9BBEEBEC9D7" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="WorkOrdSubOperDocSet" Role="FromRole_assoc_DBE6AB09074E11A5BA67B9BBEEBEC9D7"/>
+                    <End EntitySet="ZEAM_C_WO_OPER_DOCUMENTSSet" Role="ToRole_assoc_DBE6AB09074E11A5BA67B9BBEEBEC9D7"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_A1A63CF521321F0EBD012C1A5A106B5A" Association="ZFIORI_EAM_APP_SRV.assoc_A1A63CF521321F0EBD012C1A5A106B5A" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="WorkOrderDetailSet" Role="FromRole_assoc_A1A63CF521321F0EBD012C1A5A106B5A"/>
+                    <End EntitySet="ZEAM_I_WO_OBJECT_LIST" Role="ToRole_assoc_A1A63CF521321F0EBD012C1A5A106B5A"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_323501EED4F7FB533FE8E7CE9250380B" Association="ZFIORI_EAM_APP_SRV.assoc_323501EED4F7FB533FE8E7CE9250380B" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="WorkOrderDetailSet" Role="FromRole_assoc_323501EED4F7FB533FE8E7CE9250380B"/>
+                    <End EntitySet="ZEAM_I_GET_ALL_ASSIGN_USERS" Role="ToRole_assoc_323501EED4F7FB533FE8E7CE9250380B"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_B6D26E5BB572F61FB3673C4966EF3F02" Association="ZFIORI_EAM_APP_SRV.assoc_B6D26E5BB572F61FB3673C4966EF3F02" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="WorkOrderDetailSet" Role="FromRole_assoc_B6D26E5BB572F61FB3673C4966EF3F02"/>
+                    <End EntitySet="ZEAM_I_WO_ATTACHMENT_SHOW" Role="ToRole_assoc_B6D26E5BB572F61FB3673C4966EF3F02"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_27A1154D2AF122720726596782BA5B4F" Association="ZFIORI_EAM_APP_SRV.assoc_27A1154D2AF122720726596782BA5B4F" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="WorkOrderDetailSet" Role="FromRole_assoc_27A1154D2AF122720726596782BA5B4F"/>
+                    <End EntitySet="ZEAM_I_WO_OPERA_CONF_DET" Role="ToRole_assoc_27A1154D2AF122720726596782BA5B4F"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_81F30BDC1AE2A64349CF352F6C5BC2D4" Association="ZFIORI_EAM_APP_SRV.assoc_81F30BDC1AE2A64349CF352F6C5BC2D4" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="WorkOrderDetailSet" Role="FromRole_assoc_81F30BDC1AE2A64349CF352F6C5BC2D4"/>
+                    <End EntitySet="ZEAM_I_WO_COMPONENTS" Role="ToRole_assoc_81F30BDC1AE2A64349CF352F6C5BC2D4"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_14763945C8482860E4D6BE86E1D019F6" Association="ZFIORI_EAM_APP_SRV.assoc_14763945C8482860E4D6BE86E1D019F6" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="AddMaterialSet" Role="FromRole_assoc_14763945C8482860E4D6BE86E1D019F6"/>
+                    <End EntitySet="ZEAM_C_ADD_MATERIALSet" Role="ToRole_assoc_14763945C8482860E4D6BE86E1D019F6"/>
+                </AssociationSet>
+                <FunctionImport Name="UpdateTime" ReturnType="Collection(ZFIORI_EAM_APP_SRV.MessagesReturn)" m:HttpMethod="POST" sap:label="UpdateTime" sap:action-for="ZFIORI_EAM_APP_SRV.MessageReturn">
+                    <Parameter Name="IsPromark" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="WorkOrder" Type="Edm.String" Mode="In" MaxLength="12"/>
+                    <Parameter Name="WorkOrderOperation" Type="Edm.String" Mode="In" MaxLength="4"/>
+                    <Parameter Name="WorkOrderSubOperation" Type="Edm.String" Mode="In" MaxLength="4"/>
+                    <Parameter Name="ConfirmationText" Type="Edm.String" Mode="In" MaxLength="40"/>
+                    <Parameter Name="UserPersNo" Type="Edm.String" Mode="In" MaxLength="12"/>
+                    <Parameter Name="WorkCenter" Type="Edm.String" Mode="In" MaxLength="8"/>
+                    <Parameter Name="Plant" Type="Edm.String" Mode="In" MaxLength="4"/>
+                    <Parameter Name="VarianceReason" Type="Edm.String" Mode="In" MaxLength="4"/>
+                    <Parameter Name="StartDateTime" Type="Edm.DateTime" Mode="In" Precision="0"/>
+                    <Parameter Name="EndDateTime" Type="Edm.DateTime" Mode="In" Precision="0"/>
+                    <Parameter Name="Action" Type="Edm.String" Mode="In" MaxLength="12"/>
+                    <Parameter Name="FinalConfirmation" Type="Edm.String" Mode="In" MaxLength="1"/>
+                    <Parameter Name="Location" Type="Edm.String" Mode="In" MaxLength="10"/>
+                </FunctionImport>
+                <FunctionImport Name="UpdatePartner" ReturnType="Collection(ZFIORI_EAM_APP_SRV.MessagesReturn)" m:HttpMethod="POST" sap:label="UpdatePartner" sap:action-for="ZFIORI_EAM_APP_SRV.MessageReturn">
+                    <Parameter Name="PartnerFunctionType" Type="Edm.String" Mode="In" MaxLength="4"/>
+                    <Parameter Name="Partners" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="MainOrderObject" Type="Edm.String" Mode="In" MaxLength="20"/>
+                    <Parameter Name="MaintOrder" Type="Edm.String" Mode="In" MaxLength="12"/>
+                </FunctionImport>
+                <FunctionImport Name="UpdateEquipmentLocation" ReturnType="Collection(ZFIORI_EAM_APP_SRV.MessagesReturn)" m:HttpMethod="POST" sap:label="UpdateTime" sap:action-for="ZFIORI_EAM_APP_SRV.MessageReturn">
+                    <Parameter Name="Equipment" Type="Edm.String" Mode="In" MaxLength="18"/>
+                    <Parameter Name="StorageLocation" Type="Edm.String" Mode="In" MaxLength="4"/>
+                    <Parameter Name="Plant" Type="Edm.String" Mode="In" MaxLength="4"/>
+                    <Parameter Name="FunctionalLocation" Type="Edm.String" Mode="In" MaxLength="40"/>
+                    <Parameter Name="DocHeaderText" Type="Edm.String" Mode="In" MaxLength="25"/>
+                    <Parameter Name="FunctionalLocationOld" Type="Edm.String" Mode="In" MaxLength="40"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZFIORI_EAM_APP_SRV.ZEAM_C_ADD_MATERIALType/Material">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Material"/>
+                        <PropertyValue Property="CollectionPath" String="I_MaterialStdVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Material"/>
+                                    <PropertyValue Property="ValueListProperty" String="Material"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Material_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZFIORI_EAM_APP_SRV.ZEAM_C_EQUIPMENTType/Customer">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Customer"/>
+                        <PropertyValue Property="CollectionPath" String="I_Customer_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Customer"/>
+                                    <PropertyValue Property="ValueListProperty" String="Customer"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="OrganizationBPName1"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="OrganizationBPName2"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Country"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CityName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="StreetName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CustomerName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZFIORI_EAM_APP_SRV.ZEAM_C_WORK_ORDER_OPERATIONType/ExecutingWorkCenter">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Work Center By Semantic Key"/>
+                        <PropertyValue Property="CollectionPath" String="I_WrkCtrBySemanticKeyStdVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ExecutingWorkCenter"/>
+                                    <PropertyValue Property="ValueListProperty" String="WorkCenter"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Plant"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="WorkCenter_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="WorkCenterInternalID"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZFIORI_EAM_APP_SRV.ZEAM_I_WO_OBJECT_LISTType/Material">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Material"/>
+                        <PropertyValue Property="CollectionPath" String="I_MaterialStdVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Material"/>
+                                    <PropertyValue Property="ValueListProperty" String="Material"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Material_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZFIORI_EAM_APP_SRV.ZEAM_I_WO_OPERATIONS_LISTType/ExecutingWorkCenter">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Work Center By Semantic Key"/>
+                        <PropertyValue Property="CollectionPath" String="I_WrkCtrBySemanticKeyStdVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ExecutingWorkCenter"/>
+                                    <PropertyValue Property="ValueListProperty" String="WorkCenter"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Plant"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="WorkCenter_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="WorkCenterInternalID"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZFIORI_EAM_APP_SRV.ZFIORI_EAM_APP_SRV_Entities">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZFIORI_EAM_APP_SRV.ZEAM_C_WORK_ORDER_DETAILType/MainWorkCenter">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZFIORI_EAM_APP_SRV.ZEAM_C_WORK_ORDER_LISTType/MainWorkCenter">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZFIORI_EAM_APP_SRV.ZEAM_C_WO_TILE_COUNTERType/MainWorkCenter">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZFIORI_EAM_APP_SRV.ZFIORI_EAM_APP_SRV_Entities/ZEAM_C_ADD_MATERIAL">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>PlanningPlant</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
+                                    <PropertyValue Property="FilterRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Filterable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>PlanningPlant</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZFIORI_EAM_APP_SRV.ZFIORI_EAM_APP_SRV_Entities/ZEAM_C_EQUIPMENT">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                                <PropertyPath>GrossWeight</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZFIORI_EAM_APP_SRV.ZFIORI_EAM_APP_SRV_Entities/ZEAM_C_WORK_ORDER_DETAIL">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>PersonResponsibleName</PropertyPath>
+                                <PropertyPath>Equipmentpartner</PropertyPath>
+                                <PropertyPath>SOPartner</PropertyPath>
+                                <PropertyPath>AssignedUser</PropertyPath>
+                                <PropertyPath>AssignedWC</PropertyPath>
+                                <PropertyPath>TechContact</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>PersonResponsibleName</PropertyPath>
+                                <PropertyPath>Equipmentpartner</PropertyPath>
+                                <PropertyPath>SOPartner</PropertyPath>
+                                <PropertyPath>AssignedUser</PropertyPath>
+                                <PropertyPath>AssignedWC</PropertyPath>
+                                <PropertyPath>TechContact</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZFIORI_EAM_APP_SRV.ZFIORI_EAM_APP_SRV_Entities/ZEAM_C_WORK_ORDER_LIST">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Phase1</PropertyPath>
+                                <PropertyPath>Phase2</PropertyPath>
+                                <PropertyPath>Phase3</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
+                                    <PropertyValue Property="FilterRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Filterable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Phase1</PropertyPath>
+                                <PropertyPath>Phase2</PropertyPath>
+                                <PropertyPath>Phase3</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZFIORI_EAM_APP_SRV.ZFIORI_EAM_APP_SRV_Entities/ZEAM_C_WO_OPER_DOCUMENTS">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>MaintOrderRoutingNumber</PropertyPath>
+                                <PropertyPath>MaintOrderOperationCounter</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
+                                    <PropertyValue Property="FilterRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Filterable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>MaintOrderRoutingNumber</PropertyPath>
+                                <PropertyPath>MaintOrderOperationCounter</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZFIORI_EAM_APP_SRV.ZFIORI_EAM_APP_SRV_Entities/ZEAM_C_WO_SUB_OPERATIONS_LIST">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>OrderNumber</PropertyPath>
+                                <PropertyPath>OperationNumber</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
+                                    <PropertyValue Property="FilterRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Filterable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>OrderNumber</PropertyPath>
+                                <PropertyPath>OperationNumber</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZFIORI_EAM_APP_SRV.ZEAM_C_ADD_MATERIALType">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>Material</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZFIORI_EAM_APP_SRV.ZEAM_C_EQUIPMENTType">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>Equipment</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZFIORI_EAM_APP_SRV.ZEAM_C_WORK_ORDER_DETAILType">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>MaintenanceOrder</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZFIORI_EAM_APP_SRV.ZEAM_C_WORK_ORDER_LISTType">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>MaintenanceOrder</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZFIORI_EAM_APP_SRV.ZEAM_C_WO_TILE_COUNTERType">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>MaintenanceOrder</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZFIORI_EAM_APP_SRV.ZEAM_I_VarianceReasonType">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>VarianceReasonCode</PropertyPath>
+                        <PropertyPath>Plant</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="https://devapimgmnt-dev-test.cfapps.eu20.hana.ondemand.com/Test/$metadata"/>
+            <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="https://devapimgmnt-dev-test.cfapps.eu20.hana.ondemand.com/Test/$metadata"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

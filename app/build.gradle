@@ -1,0 +1,133 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'com.sap.odata.android'
+
+buildscript {
+    repositories rootProject.ext.repos
+    dependencies {
+        classpath group: 'com.sap.cloud.android', name:'odata-android-gradle-plugin', version:sdkVersion
+    }
+}
+
+odata {
+    verbose true
+    services {
+        //connection id: Test
+    zfiori_eam_app_srv_entities {
+        schemaFile file("src/main/res/raw/test.xml")
+        packageName "com.sap.cloud.android.odata.zfiori_eam_app_srv_entities"
+        serviceClass "ZFIORI_EAM_APP_SRV_Entities"
+    }
+   }
+}
+
+android {
+    compileSdkVersion 33
+    defaultConfig {
+        multiDexEnabled true
+        applicationId "com.akso.realwear"
+        minSdk 30
+        targetSdkVersion 33
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunnerArguments clearPackageData: 'true'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildFeatures {
+        dataBinding true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        freeCompilerArgs = ['-Xjvm-default=enable']
+    }
+
+    testOptions {
+        execution 'ANDROIDX_TEST_ORCHESTRATOR'
+    }
+}
+
+configurations {
+    all {
+        exclude module: 'httpclient'
+        exclude module: 'commons-logging'
+        exclude module: 'opengl-api'
+        exclude module: 'xmlParserAPIs'
+        exclude module: 'xpp3'
+        exclude module: 'android'
+    }
+}
+
+dependencies {
+    // Android framework dependencies
+    implementation group: 'androidx.appcompat', name: 'appcompat', version: '1.6.1'
+    implementation group: 'androidx.legacy', name: 'legacy-support-v4', version: '1.0.0'
+    implementation group: 'androidx.recyclerview', name: 'recyclerview', version: '1.2.1'
+    implementation group: 'com.google.android.material', name: 'material', version: '1.8.0'
+    implementation group: 'androidx.preference', name: 'preference', version: '1.2.0'
+    implementation group: 'androidx.constraintlayout', name: 'constraintlayout', version: '2.1.4'
+
+    // Android Architecture Components
+    implementation group: 'androidx.lifecycle', name: 'lifecycle-common-java8', version: '2.5.1'
+    implementation group: 'androidx.lifecycle', name: 'lifecycle-extensions', version: '2.2.0'
+    implementation 'androidx.camera:camera-core:1.2.1'
+
+    // JUnit dependency
+    testImplementation 'junit:junit:4.13.2'
+
+    // SAP Cloud Android SDK dependencies
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
+    implementation "androidx.work:work-runtime-ktx:2.8.0"
+    implementation "com.google.guava:guava:$guava_android_version"
+    implementation group: 'com.sap.cloud.android', name: 'foundation', version: sdkVersion
+    implementation group: 'com.sap.cloud.android', name: 'fiori', version: sdkVersion
+    implementation group: 'com.sap.cloud.android', name: 'onboarding', version: sdkVersion
+    implementation group: 'com.sap.cloud.android', name: 'flowsv2', version: sdkVersion
+    implementation group:'com.sap.cloud.android', name:'odata', version: sdkVersion
+    implementation group: 'com.sap.cloud.android', name: 'offline-odata', version: sdkVersion
+
+    // Logging dependency
+    implementation 'org.slf4j:slf4j-api:1.7.36'
+    implementation 'com.github.tony19:logback-android:2.0.0'
+
+    // Retrofit for REST API
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+
+    // Glide for downloaded media handling
+    implementation 'com.github.bumptech.glide:glide:4.14.2'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
+
+// coroutine
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
+
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation 'androidx.test:runner:1.5.2'
+    androidTestImplementation 'androidx.test:rules:1.5.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+
+    // For UI testing
+    androidTestImplementation 'com.pgs-soft:espressodoppio:1.0.0'
+    androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
+    androidTestUtil 'androidx.test:orchestrator:1.4.2'
+
+    //Java code also need this library to convert java class to kotlin class
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.21"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:1.7.21"
+}
+
+
+

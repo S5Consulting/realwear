@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/time_log_table"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/border_bottom_table_header"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp">
+
+        <TextView
+            android:id="@+id/textView32"
+            android:layout_width="136dp"
+            android:layout_height="wrap_content"
+            android:text="@string/time_log_created_by" />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="123dp"
+            android:layout_height="wrap_content"
+            android:text="@string/time_log_actual_work" />
+
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="149dp"
+            android:layout_height="wrap_content"
+            android:text="@string/time_log_remaining_work" />
+
+        <TextView
+            android:id="@+id/textView28"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@string/time_log_final_confirm" />
+
+        <TextView
+            android:id="@+id/textView29"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@string/time_log_cancel" />
+
+        <TextView
+            android:id="@+id/textView33"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@string/time_log_comment" />
+
+
+    </TableRow>
+
+
+
+</TableLayout>

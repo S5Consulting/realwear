@@ -1,0 +1,17 @@
+   ______________________________
+ / \                             \.
+|   | This log file was created  |.
+ \_ | by the Wizard, it contains |.
+    | the configuration data     |.
+    | used for the application   |.
+    | generation.                |.
+    |                            |.
+    | It shouldn't be edited     |.
+    | manually, changing it      |.
+    | won't affect the generated |.
+    | sample.                    |.
+    |   _________________________|___
+    |  /                            /.
+    \_/____________________________/.
+
+{"projectName":"Realwear","projectLocation":"C:\\Users\\JukkaJohannesNeuvone\\AndroidStudioProjects\\Realwear","projectNamespace":"com.akso.realwear","accountName":"AKSO Mobile Services","serviceURL":"https://devapimgmnt-dev-test.cfapps.eu20.hana.ondemand.com/","serverURL":"https://mobile-service-cockpit-web.cfapps.eu20.hana.ondemand.com/cockpit/v1/org/31a19566-ec05-4581-bbfa-ca2e87c59ff8/space/1a438a83-efd7-456c-8268-62918a659670/","applicationID":"Test","applicationSecurityConfig":"BASIC","jsonPath":null,"senderID":null,"serverKey":null,"isLogEnabled":false,"isLogUploadEnabled":false,"SAPSDKLocation":"MAVEN_LOCAL","useDiscoveryService":false,"generateJavaCode":false,"generateOnlineApp":false,"isUsageIncluded":false,"isCrashReportIncluded":false,"isMultipleUserMode":false}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/JukkaJohannesNeuvone/AndroidStudioProjects/Realwear/app/src/main/res/drawable/custom_progress_bar.xml" value="0.271" />
+        <entry key="..\:/Users/JukkaJohannesNeuvone/AndroidStudioProjects/Realwear/app/src/main/res/drawable/progress_bar.xml" value="0.1205" />
+        <entry key="..\:/Users/JukkaJohannesNeuvone/AndroidStudioProjects/Realwear/app/src/main/res/drawable/splash_centered.xml" value="0.2355" />
+        <entry key="..\:/Users/JukkaJohannesNeuvone/AndroidStudioProjects/Realwear/app/src/main/res/layout/attachment_listitem.xml" value="0.6" />
+        <entry key="..\:/Users/JukkaJohannesNeuvone/AndroidStudioProjects/Realwear/app/src/main/res/layout/attachment_view.xml" value="0.321875" />
+        <entry key="..\:/Users/JukkaJohannesNeuvone/AndroidStudioProjects/Realwear/app/src/main/res/layout/equipment_listitem.xml" value="0.5" />
+        <entry key="..\:/Users/JukkaJohannesNeuvone/AndroidStudioProjects/Realwear/app/src/main/res/layout/fragment_attachments.xml" value="0.325" />
+        <entry key="..\:/Users/JukkaJohannesNeuvone/AndroidStudioProjects/Realwear/app/src/main/res/layout/fragment_equipment.xml" value="0.18766290182450043" />
+        <entry key="..\:/Users/JukkaJohannesNeuvone/AndroidStudioProjects/Realwear/app/src/main/res/layout/fragment_operation_attachments.xml" value="0.321875" />
+        <entry key="..\:/Users/JukkaJohannesNeuvone/AndroidStudioProjects/Realwear/app/src/main/res/layout/fragment_order_details.xml" value="0.325" />
+        <entry key="..\:/Users/JukkaJohannesNeuvone/AndroidStudioProjects/Realwear/app/src/main/res/layout/fragment_spare_parts.xml" value="0.5" />
+        <entry key="..\:/Users/JukkaJohannesNeuvone/AndroidStudioProjects/Realwear/app/src/main/res/layout/fragment_suboperations.xml" value="0.17395833333333333" />
+        <entry key="..\:/Users/JukkaJohannesNeuvone/AndroidStudioProjects/Realwear/app/src/main/res/layout/fragment_time_log.xml" value="0.8" />
+        <entry key="..\:/Users/JukkaJohannesNeuvone/AndroidStudioProjects/Realwear/app/src/main/res/layout/operation_details.xml" value="0.22395833333333334" />
+        <entry key="..\:/Users/JukkaJohannesNeuvone/AndroidStudioProjects/Realwear/app/src/main/res/layout/operation_listitem.xml" value="0.17395833333333333" />
+        <entry key="..\:/Users/JukkaJohannesNeuvone/AndroidStudioProjects/Realwear/app/src/main/res/layout/simple.xml" value="0.4221014492753623" />
+        <entry key="..\:/Users/JukkaJohannesNeuvone/AndroidStudioProjects/Realwear/app/src/main/res/layout/suboperation_item.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/JukkaJohannesNeuvone/AndroidStudioProjects/Realwear/app/src/main/res/layout/work_order_details.xml" value="0.24134078212290502" />
+        <entry key="..\:/Users/JukkaJohannesNeuvone/AndroidStudioProjects/Realwear/app/src/main/res/layout/work_order_item.xml" value="0.5048802129547472" />
+        <entry key="..\:/Users/JukkaJohannesNeuvone/AndroidStudioProjects/Realwear/app/src/main/res/layout/work_orders_list.xml" value="0.268" />
+        <entry key="..\:/Users/JukkaJohannesNeuvone/AndroidStudioProjects/Realwear/app/src/main/res/xml/file_paths.xml" value="0.565625" />
+        <entry key="..\:/Users/JukkaJohannesNeuvone/AndroidStudioProjects/Realwear/app/src/main/res/xml/preferences.xml" value="0.325" />
+        <entry key="..\:/Users/JukkaJohannesNeuvone/AndroidStudioProjects/Realwear/app/src/main/res/xml/provider_paths.xml" value="0.24739583333333334" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

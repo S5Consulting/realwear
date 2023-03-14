@@ -1,0 +1,89 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="application_name">Realwear</string>
+
+    <!--Work orders view-->
+    <string name="work_orders_title">Work Order List</string>
+    <string name="work_orders_priority">Order Priority:</string>
+    <string name="work_orders_start">Start:</string>
+    <string name="work_orders_quality_inspection">Quality Inspection</string>
+    <string name="work_orders_main_work_center">Main Work Center:</string>
+    <string name="work_orders_material_shortage">Material shortage</string>
+    <string name="no_assigned_work_orders">No work orders assigned</string>
+
+
+
+    <!--Work order details view-->
+
+        <!--Tab titles-->
+    <string name="order_details_title">Order details</string>
+    <string name="operations_title">Operations</string>
+    <string name="equipment_title">Equipment</string>
+    <string name="attachments_title">Attachments</string>
+        <!--Order details tab-->
+    <string name="details_work_order_type">Order Type:</string>
+    <string name="details_work_order_text">Work order text:</string>
+    <string name="details_location">Location:</string>
+    <string name="details_job_type">Job type:</string>
+    <string name="details_wbs">WBS:</string>
+    <string name="details_planning_plant">Planning plant:</string>
+    <string name="details_sales_order">Sales order:</string>
+    <string name="details_sales_doc_item">Sales doc item:</string>
+    <string name="details_superior_order">Superior order:</string>
+    <string name="details_workcenter_plant">Work Center plant:</string>
+    <string name="details_workcenter_multiple">Workcenter (multiple) ID:</string>
+    <string name="details_workcenter_main">Main Work Center</string>
+    <string name="details_employee_responsible">Employee responsible:</string>
+    <string name="details_equipment_partner">Equipment partner:</string>
+    <string name="details_so_partner">SO partner:</string>
+    <string name="details_assigned_user">Assigned user:</string>
+    <string name="details_assigned_to_wc">Assigned to WC:</string>
+    <string name="details_tech_contact">Tech. contact:</string>
+
+    <!--Operations tab-->
+    <string name="operation_listitem_work_executed">Work executed:</string>
+
+    <!--Equipment tab-->
+    <string name="equipment_description">Description:</string>
+    <string name="equipment_material_no">Material no:</string>
+    <string name="equipment_material">Material:</string>
+    <string name="equipment_serial_no">Serial no:</string>
+    <string name="equipment_func_loc">Func. Loc.:</string>
+    <string name="equipment_storage_loc">Stor. Loc.:</string>
+    <string name="equipment_no">Equipment no:</string>
+    <string name="equipment_location">Warehouse/Storage Location:</string>
+    <string name="equipment_details">Details</string>
+
+    <!--Operation view-->
+    <string name="operation_details_more">SHOW MORE</string>
+    <string name="operation_details_less">SHOW LESS</string>
+    <string name="btn_next_operation">Next operation:</string>
+
+
+
+
+    <!--Operation spare parts table-->
+    <string name="subop_table_material">Material (Mfr Partnr)</string>
+    <string name="subop_table_plant">Plant</string>
+    <string name="subop_table_stock">Stock</string>
+    <string name="subop_table_quantities">Quantities</string>
+    <string name="subop_required_quantity">EA Required Quantity</string>
+    <string name="subop_withdrawn_quantity">EA Withdrawn Quantity</string>
+
+    <!--Operation time log table-->
+    <string name="time_log_created_by">Created by</string>
+    <string name="time_log_actual_work">Actual Work</string>
+    <string name="time_log_remaining_work">Remaining Work</string>
+    <string name="time_log_final_confirm">Final Confirmation</string>
+    <string name="time_log_cancel">Cancelled</string>
+    <string name="time_log_comment">Comment</string>
+
+
+
+    <!--Realware settings-->
+    <string name="hf_no_number">hf_no_number</string>
+    <string name="voice_use_description">hf_use_description</string>
+    <string name="voice_use_text">hf_use_text</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

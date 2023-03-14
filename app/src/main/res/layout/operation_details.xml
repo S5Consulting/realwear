@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="5dp"
+    android:paddingEnd="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:background="#eff4f9">
+
+            <RelativeLayout
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:contentDescription="@string/hf_no_number"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btn_back_operation_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="hf_use_description|Go back"
+                    android:onClick="finish"
+                    app:icon="@drawable/ic_chevron_left_black_24dp"
+                    tools:ignore="HardcodedText" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/operation_details_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:text="id"
+                    android:textAlignment="center"
+                    tools:ignore="TextContrastCheck" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#eff4f9"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:contentDescription=""
+                    android:orientation="vertical"
+                    android:paddingStart="25dp"
+                    android:paddingTop="25dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="37dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/next_operation_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Next operation:" />
+
+                        <TextView
+                            android:id="@+id/btn_next_operation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:paddingStart="5dp"
+                            android:text="TextView"
+                            android:contentDescription="hf_no_number|hf_use_description|Next operation"/>
+
+                        <TextView
+                            android:id="@+id/operation_timer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="end" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/btn_toggle_op_info"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:text="@string/operation_details_more"
+                            android:contentDescription="hf_use_text|hf_no_number"/>
+
+                        <TextView
+                            android:id="@+id/operation_info"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="long text long textlong textlong textlonlong text long textlong textlong textlonlong text long textlong textlong textlonlong text long textlong textlong textlonlong text long textlong textlong textlonlong text long textlong textlong textlonlong text long textlong textlong textlonlong text long textlong textlong textlonlong text long textlong textlong textlonlong text long textlong textlong textlon text long textlong textlong textlong textlong textlong textlong textlong textlong textlong text" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/operation_tablayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#eff4f9"
+                    android:layout_marginStart="20dp"
+                    app:tabIconTint="@color/tab_icon_color"
+                    app:tabGravity="start"
+                    app:tabIndicatorColor="#3b6f9a"
+                    app:tabMode="scrollable"
+                    app:tabPaddingBottom="0dp"
+                    app:tabPaddingEnd="0dp"
+                    app:tabPaddingStart="0dp"
+                    app:tabPaddingTop="0dp"
+                    app:tabTextAppearance="@style/TabFont"
+                    app:tabTextColor="#000">
+
+
+                </com.google.android.material.tabs.TabLayout>
+
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/operation_details_scroll"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="584dp"
+                            android:orientation="vertical">
+
+                            <androidx.viewpager.widget.ViewPager
+                                android:id="@+id/opViewPager"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="1dp"
+                                android:layout_marginEnd="1dp"
+                                android:layout_marginBottom="1dp"
+                                android:background="#fff"
+                                android:contentDescription="hf_scroll_vertical"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/operation_tablayout">
+
+                            </androidx.viewpager.widget.ViewPager>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.core.widget.NestedScrollView>
+
+            </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
