@@ -52,8 +52,7 @@ class WorkOrderListActivity: AppCompatActivity() {
         dataService = ZFIORI_EAM_APP_SRV_Entities(provider)
 
         val keys = "WorkOrderListSet(Phase1='2',Phase2='2',Phase3='2')/Set?$"
-        val filter = "filter=(MaintenanceOrder%20eq%20%274636657%27)"
-//        val filter= "filter=(IsUserResponsible%20eq%20true)"
+        val filter= "filter=(IsEmployeeResponsible%20eq%20true)"
         query = DataQuery().from(workOrderListSet).withURL(keys + filter)
 
         val result = dataService.getZEAMCWORKORDERLISTSet(query)
