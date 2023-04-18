@@ -1,5 +1,6 @@
 package com.akso.realwear.app.app.operationDetails
 
+import android.annotation.SuppressLint
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -42,6 +43,7 @@ class OperationDetailsActivity: AppCompatActivity() {
     var operationNumber : String? = ""
     var operationControlKey : String? = ""
 
+    @SuppressLint("ResourceAsColor")
     @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -194,7 +196,13 @@ class OperationDetailsActivity: AppCompatActivity() {
             }
         }
 
-        //Receive last checked suboperation from SuboperationItemAdapter
+
+        /**
+         Receive last checked suboperation from SuboperationItemAdapter
+         This is probably a bad solution, should
+
+         **/
+
         val mMessageReceiver: BroadcastReceiver = object : BroadcastReceiver() {
             override fun onReceive(context: Context?, intent: Intent) {
 
@@ -214,7 +222,6 @@ class OperationDetailsActivity: AppCompatActivity() {
                             operationNumber,
                             lastChecked,
                             "test",
-//                            "345984",
                             username,
                             workCenter,
                             planningPlant,
@@ -234,7 +241,6 @@ class OperationDetailsActivity: AppCompatActivity() {
                             operationNumber,
                             lastChecked,
                             "test",
-//                            "345984",
                             username,
                             workCenter,
                             planningPlant,
@@ -254,7 +260,6 @@ class OperationDetailsActivity: AppCompatActivity() {
                             operationNumber,
                             lastChecked,
                             "test",
-//                           "345984",
                             username,
                             workCenter,
                             planningPlant,
@@ -268,7 +273,6 @@ class OperationDetailsActivity: AppCompatActivity() {
                             null,
                             null
                         )
-
 
 
                         Log.i("returnmessage", MessageReturn().toString())
@@ -292,8 +296,7 @@ class OperationDetailsActivity: AppCompatActivity() {
                         operationNumber,
                         lastChecked,
                         "test",
-//                        "345984",
-                            username,
+                        username,
                         workCenter,
                         planningPlant,
                         "",
@@ -312,7 +315,6 @@ class OperationDetailsActivity: AppCompatActivity() {
                         operationNumber,
                         lastChecked,
                         "test",
-//                        "345984",
                         username,
                         workCenter,
                         planningPlant,
@@ -335,10 +337,6 @@ class OperationDetailsActivity: AppCompatActivity() {
             IntentFilter("lastChecked")
         )
 
-//        val asd = subOpResult[0]
-//        asd.finalConfirmed = true
-//        dataService.updateEntity(asd)
-
         btnBack.setOnClickListener {
             finish()
         }
@@ -352,6 +350,7 @@ class OperationDetailsActivity: AppCompatActivity() {
             }
         }
 
+        // Open the next operation in a new view and set the correct data based on index
         btnNextOperation.setOnClickListener {
             val intent = Intent(this, OperationDetailsActivity::class.java)
             if(operationIndex < nextOpResult.size -2) {

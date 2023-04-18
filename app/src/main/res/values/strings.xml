@@ -53,6 +53,8 @@
     <string name="equipment_location">Warehouse/Storage Location:</string>
     <string name="equipment_details">Details</string>
 
+    <!--Attachments tab-->
+    <string name="no_work_order_attachments">No attachments</string>
     <!--Operation view-->
     <string name="operation_details_more">SHOW MORE</string>
     <string name="operation_details_less">SHOW LESS</string>

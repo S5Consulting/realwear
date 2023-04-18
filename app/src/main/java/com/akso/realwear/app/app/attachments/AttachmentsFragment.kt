@@ -16,6 +16,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
@@ -80,8 +81,14 @@ class AttachmentsFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-
+        
         val data = ACTIVITY.attachmentData
+
+        if(data.size == 0) {
+           val noAttachments = view?.findViewById<TextView>(R.id.no_work_order_attachments)
+           noAttachments?.visibility = View.VISIBLE
+        }
+        
         for(attachment in data) {
             attachmentsList.add(attachment)
             maintOrder = attachment.maintenanceOrder
@@ -115,8 +122,6 @@ class AttachmentsFragment : Fragment() {
         val btnCamera : Button = view.findViewById(R.id.btn_open_cam)
 
         btnCamera.setOnClickListener {
-//            val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-//            startActivityForResult(takePictureIntent, 1)
             dispatchTakePictureIntent()
         }
 

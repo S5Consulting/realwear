@@ -47,7 +47,7 @@ class WorkOrderListActivity: AppCompatActivity() {
 
         createList()
     }
-
+    
     private fun createList()  {
         dataService = ZFIORI_EAM_APP_SRV_Entities(provider)
 

@@ -130,7 +130,7 @@ class WorkOrderDetailsActivity: AppCompatActivity()  {
         })
 
 
-        //TODO(set correct icons, check if round background is possible)
+        //TODO(set correct icons)
         tabLayout.getTabAt(0)?.setIcon(R.drawable.ic_info_black_24dp)
         tabLayout.getTabAt(0)?.setText(R.string.order_details_title)
         tabLayout.getTabAt(1)?.setIcon(R.drawable.ic_assignment_turned_in_black_24dp)
