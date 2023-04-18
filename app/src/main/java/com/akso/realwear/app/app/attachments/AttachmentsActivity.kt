@@ -1,12 +1,9 @@
 package com.akso.realwear.app.app.attachments
 import android.os.Bundle
-import android.widget.Button
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.akso.realwear.R
-import com.akso.realwear.app.app.attachments.AttachmentItemAdapter
 
 class AttachmentsActivity: AppCompatActivity() {
     private lateinit var attachmentItemAdapter: AttachmentItemAdapter

@@ -3,7 +3,6 @@ package com.akso.realwear.app.app.operations
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.akso.realwear.R
 import com.akso.realwear.app.app.operationDetails.OperationDetailsActivity
-import com.akso.realwear.app.app.orderDetails.WorkOrderDetailsActivity
 
 
 class OperationItemAdapter(private val dataSet: ArrayList<Operation>)

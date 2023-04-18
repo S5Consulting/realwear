@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.Camera
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
@@ -15,7 +14,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.FileProvider
@@ -23,31 +21,15 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.akso.realwear.R
-import com.akso.realwear.app.app.callAPI.ApiInterface
-import com.akso.realwear.app.app.callAPI.RestApiService
 import com.akso.realwear.app.app.orderDetails.WorkOrderDetailsActivity
-import com.sap.cloud.android.odata.zfiori_eam_app_srv_entities.WorkOrderDetail
 import com.sap.cloud.android.odata.zfiori_eam_app_srv_entities.ZEAMIWOATTACHMENTSHOWType
 import com.sap.cloud.android.odata.zfiori_eam_app_srv_entities.ZFIORI_EAM_APP_SRV_Entities
-import com.sap.cloud.mobile.foundation.common.ClientProvider
-import com.sap.cloud.mobile.foundation.networking.CsrfTokenInterceptor
 import com.sap.cloud.mobile.odata.ByteStream
 import com.sap.cloud.mobile.odata.OnlineODataProvider
-import com.sap.cloud.mobile.odata.Property
-import com.sap.cloud.mobile.odata.RequestOptions
-import com.sap.cloud.mobile.odata.http.HttpHeaders
-import com.sap.cloud.mobile.odata.http.OKHttpHandler
-import okhttp3.*
-import okhttp3.RequestBody.Companion.asRequestBody
-import okio.ByteString.Companion.toByteString
 import java.io.*
 import java.lang.RuntimeException
-import java.net.Socket
 import java.text.SimpleDateFormat
 import java.util.*
-import java.util.concurrent.TimeUnit
-import kotlin.time.Duration.Companion.seconds
-
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

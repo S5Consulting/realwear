@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.akso.realwear.R
-import com.akso.realwear.app.app.equipment.EquipmentData
-import com.akso.realwear.app.app.equipment.EquipmentItemAdapter
 
 
 class EquipmentListActivity: AppCompatActivity() {

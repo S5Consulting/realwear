@@ -2,7 +2,6 @@ package com.akso.realwear.app.app
 
 import android.content.Intent
 import android.os.Bundle
-
 import androidx.appcompat.app.AppCompatActivity
 import com.akso.realwear.R
 import com.akso.realwear.app.app.workOrders.WorkOrderListActivity

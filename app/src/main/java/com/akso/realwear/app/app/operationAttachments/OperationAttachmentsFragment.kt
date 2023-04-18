@@ -1,9 +1,6 @@
 package com.akso.realwear.app.app.operationAttachments
 
 import android.app.Activity
-import android.app.Activity.RESULT_OK
-import android.content.ContentResolver
-import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -19,21 +16,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
-import androidx.core.net.toUri
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.akso.realwear.R
 import com.akso.realwear.app.app.attachments.AttachmentData
 import com.akso.realwear.app.app.attachments.AttachmentItemAdapter
 import com.akso.realwear.app.app.operationDetails.OperationDetailsActivity
-import com.sap.cloud.android.odata.zfiori_eam_app_srv_entities.ZEAMIWOATTACHMENTSHOWType
 import com.sap.cloud.android.odata.zfiori_eam_app_srv_entities.ZEAMIWOOPERDOCUMENTSType
 import com.sap.cloud.android.odata.zfiori_eam_app_srv_entities.ZFIORI_EAM_APP_SRV_Entities
 import com.sap.cloud.mobile.odata.ByteStream
 import com.sap.cloud.mobile.odata.OnlineODataProvider
-import com.sap.cloud.mobile.odata.http.HttpHeaders
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.IOException

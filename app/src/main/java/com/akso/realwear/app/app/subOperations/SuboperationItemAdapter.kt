@@ -1,19 +1,13 @@
 package com.akso.realwear.app.app.subOperations
 
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.appcompat.app.AlertDialog
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.RecyclerView
 import com.akso.realwear.R
-import com.akso.realwear.app.app.operationDetails.OperationDetailsActivity
-import com.sap.cloud.android.odata.zfiori_eam_app_srv_entities.ZEAMCWOSUBOPERATIONSLISTParameters
-import com.sap.cloud.android.odata.zfiori_eam_app_srv_entities.ZFIORI_EAM_APP_SRV_Entities
-import com.sap.cloud.mobile.fiori.`object`.AbstractObjectCellRecyclerAdapter
 import kotlinx.android.synthetic.main.suboperation_item.view.*
 
 class SuboperationItemAdapter(private val dataSet: ArrayList<SubOperationData>) :
@@ -70,9 +64,6 @@ class SuboperationItemAdapter(private val dataSet: ArrayList<SubOperationData>) 
                     isAllChecked = dataSet.all { data.isCompleted}
                 }
             }
-            Log.i("adapterdata", dataSet.toString())
-            Log.i("adapterclick", isAllChecked.toString())
-            Log.i("checkboxclick",  currentItem.title + " " + currentItem.isCompleted)
         }
 
 

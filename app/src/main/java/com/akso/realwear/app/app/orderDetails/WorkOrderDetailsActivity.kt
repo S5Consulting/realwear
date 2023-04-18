@@ -16,7 +16,6 @@ import com.akso.realwear.R
 import com.akso.realwear.app.app.attachments.AttachmentData
 import com.akso.realwear.app.app.equipment.EquipmentData
 import com.akso.realwear.app.app.operations.Operation
-import com.akso.realwear.app.app.subOperations.SuboperationsFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.sap.cloud.android.odata.zfiori_eam_app_srv_entities.*
