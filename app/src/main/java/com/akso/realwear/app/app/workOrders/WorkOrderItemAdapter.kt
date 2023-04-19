@@ -5,7 +5,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.akso.realwear.R
 import com.akso.realwear.app.app.CustomProgressBar
@@ -15,13 +15,6 @@ import java.time.format.DateTimeFormatter
 
 class WorkOrderItemAdapter(private val dataSet: ArrayList<WorkOrder>) :
     RecyclerView.Adapter<WorkOrderItemAdapter.ViewHolder>() {
-    companion object {
-        private lateinit var context: Context
-
-        fun setContext(con: Context) {
-            context = con
-        }
-    }
 
     /**
      * Provide a reference to the type of views that you are using
@@ -69,7 +62,7 @@ class WorkOrderItemAdapter(private val dataSet: ArrayList<WorkOrder>) :
         val currentItem = dataSet[position]
         val parsedDate = LocalDateTime.parse(currentItem.startDate, DateTimeFormatter.ISO_DATE_TIME)
         val formattedDate = parsedDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"))
-
+        val context =  viewHolder.title.context
         val start = context.getString(R.string.work_orders_start)
         val priority = context.getString(R.string.work_orders_priority)
         val workCenter = context.getString(R.string.work_orders_main_work_center)

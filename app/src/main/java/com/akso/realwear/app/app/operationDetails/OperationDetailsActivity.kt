@@ -48,6 +48,13 @@ class OperationDetailsActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.operation_details)
+
+        setData()
+    }
+
+
+fun setData() {
+    try {
         dataService = ZFIORI_EAM_APP_SRV_Entities(provider)
         provider.serviceOptions.checkVersion = false
 
@@ -116,8 +123,8 @@ class OperationDetailsActivity: AppCompatActivity() {
         val operationInfo = findViewById<TextView>(R.id.operation_info)
 
         operationInfo.isVisible = false
-        btnToggleInfo.setTextColor(R.color.light_blue)
-        btnNextOperation.setTextColor(R.color.light_blue)
+        btnToggleInfo.setTextColor(resources.getColor(R.color.light_blue))
+        btnNextOperation.setTextColor(resources.getColor(R.color.light_blue))
         if(nextOperation == "no") {
             nextOperationText.isVisible = false
             btnNextOperation.isVisible = false
@@ -198,8 +205,8 @@ class OperationDetailsActivity: AppCompatActivity() {
 
 
         /**
-         Receive last checked suboperation from SuboperationItemAdapter
-         This is probably a bad solution, should
+        Receive last checked suboperation from SuboperationItemAdapter
+        This is probably a bad solution, should
 
          **/
 
@@ -254,7 +261,7 @@ class OperationDetailsActivity: AppCompatActivity() {
                             null,
                             null
                         )
-                       dataService.updateTime(
+                        dataService.updateTime(
                             isPromark,
                             orderNumber,
                             operationNumber,
@@ -365,6 +372,8 @@ class OperationDetailsActivity: AppCompatActivity() {
             intent.putExtra("NextOperation", nextOpResult[operationIndex +1].operationNumber)
             startActivity(intent)
         }
-
+        }   catch(e: Exception) {
+            Log.e("Error", "Failed loading operation details")
+        }
     }
 }

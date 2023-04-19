@@ -44,8 +44,9 @@ class WorkOrderListActivity: AppCompatActivity() {
         val layoutManager = LinearLayoutManager(applicationContext)
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = workOrderItemAdapter
-
-        createList()
+        try {
+            createList()
+        } catch (e: Exception) {Log.e("Error", "Failed loading work orders")}
     }
 
     private fun createList()  {

@@ -21,7 +21,6 @@ class WelcomeActivity : AppCompatActivity() {
     private val fManager = this.supportFragmentManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        WorkOrderItemAdapter.setContext(this)
 
         val welcomeLaunchScreen = LaunchScreen(this)
         welcomeLaunchScreen.initialize(

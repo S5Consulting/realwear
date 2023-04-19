@@ -38,6 +38,11 @@ class WorkOrderDetailsActivity: AppCompatActivity()  {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.work_order_details)
+        setData()
+    }
+
+    fun setData() {
+        try {
         dataService = ZFIORI_EAM_APP_SRV_Entities(provider)
 
         //Get order detail data
@@ -72,7 +77,7 @@ class WorkOrderDetailsActivity: AppCompatActivity()  {
         val equipmentQuery = DataQuery().from(workOrderDetailSet).withURL("$query/to_WorkOrderObjectList")
         val equipmentResult = dataService.getZeamIWoObjectList(equipmentQuery)
         for(equipment in equipmentResult) {
-        equipmentData.addAll(listOf(EquipmentData(equipment.equipmentDesc.toString(), equipment.equipment, equipment.material.toString(), equipment.materialDesc.toString(), equipment.serialNumber.toString(), equipment.functionalLocation, equipment.storageLocationName.toString() )))
+            equipmentData.addAll(listOf(EquipmentData(equipment.equipmentDesc.toString(), equipment.equipment, equipment.material.toString(), equipment.materialDesc.toString(), equipment.serialNumber.toString(), equipment.functionalLocation, equipment.storageLocationName.toString() )))
         }
 
         // Get attachment data
@@ -119,7 +124,7 @@ class WorkOrderDetailsActivity: AppCompatActivity()  {
 
         tabLayout.addOnTabSelectedListener(object : OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
-               val scroll = findViewById<NestedScrollView>(R.id.work_order_details_fragment_scroll)
+                val scroll = findViewById<NestedScrollView>(R.id.work_order_details_fragment_scroll)
                 scroll.smoothScrollTo(0, 0)
 
             }
@@ -145,5 +150,9 @@ class WorkOrderDetailsActivity: AppCompatActivity()  {
         btn.setOnClickListener {
             finish()
         }
+    } catch(e: Exception) {
+        Log.e("Error", "Failed loading work order details")
+        }
+
     }
 }

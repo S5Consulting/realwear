@@ -2,6 +2,7 @@ package com.akso.realwear.app.app.subOperations
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -42,14 +43,30 @@ class SuboperationsFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-        val data = ACTIVITY.subOperationData
 
-        for(subOp in data) {
-            suboperationsList.addAll(listOf(SubOperationData(subOp.operation, subOp.title, subOp.description, subOp.isCompleted)))
-            isAllChecked = data.all { subOp.isCompleted }
+        getData()
+    }
+
+    fun getData() {
+        try {
+            val data = ACTIVITY.subOperationData
+
+            for (subOp in data) {
+                suboperationsList.addAll(
+                    listOf(
+                        SubOperationData(
+                            subOp.operation,
+                            subOp.title,
+                            subOp.description,
+                            subOp.isCompleted
+                        )
+                    )
+                )
+                isAllChecked = data.all { subOp.isCompleted }
+            }
+        } catch (e: Exception) {
+            Log.e("Error", "Failed loading suborders")
         }
-
-
     }
 
     override fun onCreateView(
