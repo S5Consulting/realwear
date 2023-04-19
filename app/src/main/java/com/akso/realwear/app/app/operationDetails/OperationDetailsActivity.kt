@@ -49,9 +49,9 @@ class OperationDetailsActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.operation_details)
         try {
-            runBlocking {
+            runBlocking(Dispatchers.IO) {
                 launch {
-                    setData()
+                    getData()
                 }
             }
         } catch(e:Exception) {Log.e("Error", "Failed loading sub operation")}
@@ -59,7 +59,7 @@ class OperationDetailsActivity: AppCompatActivity() {
 
 
     @OptIn(DelicateCoroutinesApi::class)
-    private suspend fun setData() = coroutineScope {
+    private suspend fun getData() = coroutineScope {
     try {
         dataService = ZFIORI_EAM_APP_SRV_Entities(provider)
         provider.serviceOptions.checkVersion = false

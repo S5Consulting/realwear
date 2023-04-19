@@ -23,7 +23,7 @@ import com.sap.cloud.android.odata.zfiori_eam_app_srv_entities.WorkOrderDetail
 import com.sap.cloud.android.odata.zfiori_eam_app_srv_entities.ZFIORI_EAM_APP_SRV_Entities.workOrderDetailSet
 import com.sap.cloud.mobile.odata.DataQuery
 import com.sap.cloud.mobile.odata.OnlineODataProvider
-import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -42,19 +42,20 @@ class WorkOrderDetailsActivity: AppCompatActivity()  {
     override fun onCreate(savedInstanceState: Bundle?)  {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.work_order_details)
+
         try {
-            runBlocking {
+            runBlocking(Dispatchers.IO) {
                 launch {
-                    setData()
+                    getData()
                 }
             }
-        } catch(e: Exception) {
+        } catch(e: Error) {
             Log.e("Error", "Failed loading work order")
         }
     }
 
-    suspend fun setData() = coroutineScope {
-        try {
+    private suspend fun getData() = coroutineScope {
+
         dataService = ZFIORI_EAM_APP_SRV_Entities(provider)
 
         //Get order detail data
@@ -164,9 +165,7 @@ class WorkOrderDetailsActivity: AppCompatActivity()  {
         btn.setOnClickListener {
             finish()
         }
-    } catch(e: Exception) {
-        Log.e("Error", "Failed loading work order details")
-        }
+
 
     }
 }

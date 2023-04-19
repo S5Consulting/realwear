@@ -15,6 +15,7 @@ import com.akso.realwear.databinding.WorkOrdersListBinding
 import com.sap.cloud.android.odata.zfiori_eam_app_srv_entities.ZFIORI_EAM_APP_SRV_Entities
 import com.sap.cloud.android.odata.zfiori_eam_app_srv_entities.ZFIORI_EAM_APP_SRV_Entities.workOrderListSet
 import com.sap.cloud.mobile.odata.*
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -46,7 +47,7 @@ class WorkOrderListActivity: AppCompatActivity() {
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = workOrderItemAdapter
         try {
-            runBlocking {
+            runBlocking(Dispatchers.IO) {
                 launch {
                     createList()
                 }
