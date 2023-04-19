@@ -11,12 +11,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.akso.realwear.R
-import com.akso.realwear.app.viewmodel.zeamcworkorderlistparameters.ZEAMCWORKORDERLISTParametersViewModel
 import com.akso.realwear.databinding.WorkOrdersListBinding
-import com.sap.cloud.android.odata.zfiori_eam_app_srv_entities.ZEAMCWORKORDERLISTParameters
 import com.sap.cloud.android.odata.zfiori_eam_app_srv_entities.ZFIORI_EAM_APP_SRV_Entities
 import com.sap.cloud.android.odata.zfiori_eam_app_srv_entities.ZFIORI_EAM_APP_SRV_Entities.workOrderListSet
 import com.sap.cloud.mobile.odata.*
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 
 class WorkOrderListActivity: AppCompatActivity() {
@@ -26,7 +27,7 @@ class WorkOrderListActivity: AppCompatActivity() {
     private lateinit var query : DataQuery
     val provider = OnlineODataProvider("Test", "https://devapimgmnt-dev-test.cfapps.eu20.hana.ondemand.com/Test")
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)  {
         super.onCreate(savedInstanceState)
 
         val policy = ThreadPolicy.Builder().permitAll().build()
@@ -45,11 +46,15 @@ class WorkOrderListActivity: AppCompatActivity() {
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = workOrderItemAdapter
         try {
-            createList()
-        } catch (e: Exception) {Log.e("Error", "Failed loading work orders")}
+            runBlocking {
+                launch {
+                    createList()
+                }
+            }
+        } catch (e: Exception) { Log.e("Error", "Failed loading work orders") }
     }
 
-    private fun createList()  {
+    private suspend fun createList() = coroutineScope  {
         dataService = ZFIORI_EAM_APP_SRV_Entities(provider)
 
         val keys = "WorkOrderListSet(Phase1='2',Phase2='2',Phase3='2')/Set?$"

@@ -23,6 +23,10 @@ import com.sap.cloud.android.odata.zfiori_eam_app_srv_entities.WorkOrderDetail
 import com.sap.cloud.android.odata.zfiori_eam_app_srv_entities.ZFIORI_EAM_APP_SRV_Entities.workOrderDetailSet
 import com.sap.cloud.mobile.odata.DataQuery
 import com.sap.cloud.mobile.odata.OnlineODataProvider
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class WorkOrderDetailsActivity: AppCompatActivity()  {
     private lateinit var dataService : ZFIORI_EAM_APP_SRV_Entities
@@ -35,13 +39,21 @@ class WorkOrderDetailsActivity: AppCompatActivity()  {
     var equipmentData = ArrayList<EquipmentData>()
     var attachmentData = ArrayList<AttachmentData>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)  {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.work_order_details)
-        setData()
+        try {
+            runBlocking {
+                launch {
+                    setData()
+                }
+            }
+        } catch(e: Exception) {
+            Log.e("Error", "Failed loading work order")
+        }
     }
 
-    fun setData() {
+    suspend fun setData() = coroutineScope {
         try {
         dataService = ZFIORI_EAM_APP_SRV_Entities(provider)
 
@@ -57,6 +69,7 @@ class WorkOrderDetailsActivity: AppCompatActivity()  {
         val operationsResult = dataService.getZeamIWoOperationsList(operationsQuery)
         val nextOperationList = ArrayList<String>()
 
+        // Create a list of next operations
         for((index, operation ) in operationsResult.withIndex()) {
             if(index <= operationsResult.size -2) {
                 nextOperationList.add(operationsResult[index + 1].operationNumber)
@@ -64,6 +77,7 @@ class WorkOrderDetailsActivity: AppCompatActivity()  {
         }
         var nextOperation = ""
         for((index, operation) in operationsResult.withIndex()) {
+            // Check if next operation is available
             nextOperation = if(index < nextOperationList.size) {
                 nextOperationList[index]
 

@@ -48,12 +48,18 @@ class OperationDetailsActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.operation_details)
-
-        setData()
+        try {
+            runBlocking {
+                launch {
+                    setData()
+                }
+            }
+        } catch(e:Exception) {Log.e("Error", "Failed loading sub operation")}
     }
 
 
-fun setData() {
+    @OptIn(DelicateCoroutinesApi::class)
+    private suspend fun setData() = coroutineScope {
     try {
         dataService = ZFIORI_EAM_APP_SRV_Entities(provider)
         provider.serviceOptions.checkVersion = false
@@ -65,7 +71,6 @@ fun setData() {
         val operationCounter = intent.getStringExtra("OperationCount")
         val nextOperation = intent.getStringExtra("NextOperation")
         var operationIndex = intent.getIntExtra("OperationIndex", 0)
-        val finalConfirm = intent.getBooleanExtra("FinalConfirmed", false)
         val workCenter = intent.getStringExtra("WorkCenter")
         val planningPlant = intent.getStringExtra("PlanningPlant")
         var lastChecked: String?
@@ -206,13 +211,13 @@ fun setData() {
 
         /**
         Receive last checked suboperation from SuboperationItemAdapter
-        This is probably a bad solution, should
+        Multiple updateTime calls are required because these are handled based on the action parameter
 
          **/
 
         val mMessageReceiver: BroadcastReceiver = object : BroadcastReceiver() {
             override fun onReceive(context: Context?, intent: Intent) {
-
+                Log.i("username", username)
                 lastChecked = intent.getStringExtra("lastChecked")
                 val selectedSubOp = subOpResult.find {it.maintenanceOrderSubOperation == lastChecked}
                 selectedSubOp?.finalConfirmed = true
@@ -336,11 +341,13 @@ fun setData() {
                         null
                     )
                     Log.i("returnmessage", MessageReturn().toString())
+                    Toast.makeText(applicationContext,
+                        "Task completed", Toast.LENGTH_SHORT).show()
                 }
             }
         }
 
-        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
+        LocalBroadcastManager.getInstance(applicationContext).registerReceiver(mMessageReceiver,
             IntentFilter("lastChecked")
         )
 
@@ -359,7 +366,7 @@ fun setData() {
 
         // Open the next operation in a new view and set the correct data based on index
         btnNextOperation.setOnClickListener {
-            val intent = Intent(this, OperationDetailsActivity::class.java)
+            val intent = Intent(applicationContext, OperationDetailsActivity::class.java)
             if(operationIndex < nextOpResult.size -2) {
                 operationIndex += 1
             }
